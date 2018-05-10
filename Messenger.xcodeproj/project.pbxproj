@@ -13,6 +13,10 @@
 		77FCB82920A43DC80051A9C7 /* Messenger.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 77FCB82720A43DC80051A9C7 /* Messenger.xcdatamodeld */; };
 		77FCB82B20A43DC80051A9C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77FCB82A20A43DC80051A9C7 /* Assets.xcassets */; };
 		77FCB82E20A43DC80051A9C7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77FCB82C20A43DC80051A9C7 /* LaunchScreen.storyboard */; };
+		77FCB83820A43E400051A9C7 /* Техническое задание.txt in Resources */ = {isa = PBXBuildFile; fileRef = 77FCB83620A43E400051A9C7 /* Техническое задание.txt */; };
+		77FCB83920A43E400051A9C7 /* Настройки экранов.txt in Resources */ = {isa = PBXBuildFile; fileRef = 77FCB83720A43E400051A9C7 /* Настройки экранов.txt */; };
+		77FCB83B20A441B50051A9C7 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FCB83A20A441B50051A9C7 /* StartViewController.swift */; };
+		77FCB83D20A44A840051A9C7 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FCB83C20A44A840051A9C7 /* Extentions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		77FCB82A20A43DC80051A9C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		77FCB82D20A43DC80051A9C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		77FCB82F20A43DC80051A9C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		77FCB83620A43E400051A9C7 /* Техническое задание.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Техническое задание.txt"; path = "../../../../../Downloads/Тестовое задание/Техническое задание.txt"; sourceTree = "<group>"; };
+		77FCB83720A43E400051A9C7 /* Настройки экранов.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Настройки экранов.txt"; path = "../../../../../Downloads/Тестовое задание/Настройки экранов.txt"; sourceTree = "<group>"; };
+		77FCB83A20A441B50051A9C7 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		77FCB83C20A44A840051A9C7 /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,8 +64,11 @@
 		77FCB81F20A43DC80051A9C7 /* Messenger */ = {
 			isa = PBXGroup;
 			children = (
+				77FCB83520A43E250051A9C7 /* Docs */,
 				77FCB82020A43DC80051A9C7 /* AppDelegate.swift */,
+				77FCB83A20A441B50051A9C7 /* StartViewController.swift */,
 				77FCB82220A43DC80051A9C7 /* ViewController.swift */,
+				77FCB83C20A44A840051A9C7 /* Extentions.swift */,
 				77FCB82420A43DC80051A9C7 /* Main.storyboard */,
 				77FCB82A20A43DC80051A9C7 /* Assets.xcassets */,
 				77FCB82C20A43DC80051A9C7 /* LaunchScreen.storyboard */,
@@ -65,6 +76,15 @@
 				77FCB82720A43DC80051A9C7 /* Messenger.xcdatamodeld */,
 			);
 			path = Messenger;
+			sourceTree = "<group>";
+		};
+		77FCB83520A43E250051A9C7 /* Docs */ = {
+			isa = PBXGroup;
+			children = (
+				77FCB83720A43E400051A9C7 /* Настройки экранов.txt */,
+				77FCB83620A43E400051A9C7 /* Техническое задание.txt */,
+			);
+			path = Docs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,6 +147,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				77FCB82E20A43DC80051A9C7 /* LaunchScreen.storyboard in Resources */,
+				77FCB83820A43E400051A9C7 /* Техническое задание.txt in Resources */,
+				77FCB83920A43E400051A9C7 /* Настройки экранов.txt in Resources */,
 				77FCB82B20A43DC80051A9C7 /* Assets.xcassets in Resources */,
 				77FCB82620A43DC80051A9C7 /* Main.storyboard in Resources */,
 			);
@@ -140,6 +162,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				77FCB82320A43DC80051A9C7 /* ViewController.swift in Sources */,
+				77FCB83B20A441B50051A9C7 /* StartViewController.swift in Sources */,
+				77FCB83D20A44A840051A9C7 /* Extentions.swift in Sources */,
 				77FCB82120A43DC80051A9C7 /* AppDelegate.swift in Sources */,
 				77FCB82920A43DC80051A9C7 /* Messenger.xcdatamodeld in Sources */,
 			);
