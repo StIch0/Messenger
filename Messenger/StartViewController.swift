@@ -36,10 +36,18 @@ class StartViewController : UIViewController {
         inputButton = UIButton(type: .custom)
         view.addSubview(inputButton)
         inputButton.translatesAutoresizingMaskIntoConstraints = false
-        inputButton.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        inputButton.trailingAnchor.constraintEqualToSystemSpacingAfter(image.trailingAnchor, multiplier: 0.5).isActive = true
-        inputButton.leadingAnchor.constraintEqualToSystemSpacingAfter(image.leadingAnchor, multiplier: 0.5).isActive = true
-        inputButton.heightAnchor.constraint(equalTo: image.heightAnchor).isActive = true
+        inputButton.bottomAnchor.constraint(equalTo: view.bottomAnchor)         .isActive = true
+        if #available(iOS 11.0, *) {
+            inputButton.trailingAnchor.constraint(equalTo: image.trailingAnchor).isActive = true
+        } else {
+            // Fallback on earlier versions
+        }
+        if #available(iOS 11.0, *) {
+            inputButton.leadingAnchor.constraint(equalTo: image.leadingAnchor)  .isActive = true
+        } else {
+            // Fallback on earlier versions
+        }
+        inputButton.heightAnchor.constraint(equalTo: image.heightAnchor)        .isActive = true
      }
     func seUpButtonView(){
         inputButton.clipsToBounds = true
@@ -56,7 +64,6 @@ class StartViewController : UIViewController {
     
     @objc func loadMainView (){
         let viewController : ViewController = ViewController()
-        viewController.view.backgroundColor = .green
         navigationController?.setViewControllers([viewController], animated: true)
     }
 }
