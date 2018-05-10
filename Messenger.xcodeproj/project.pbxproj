@@ -17,6 +17,9 @@
 		77FCB83920A43E400051A9C7 /* Настройки экранов.txt in Resources */ = {isa = PBXBuildFile; fileRef = 77FCB83720A43E400051A9C7 /* Настройки экранов.txt */; };
 		77FCB83B20A441B50051A9C7 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FCB83A20A441B50051A9C7 /* StartViewController.swift */; };
 		77FCB83D20A44A840051A9C7 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FCB83C20A44A840051A9C7 /* Extentions.swift */; };
+		77FCB84020A46DAD0051A9C7 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FCB83F20A46DAD0051A9C7 /* Message.swift */; };
+		77FCB84220A46E370051A9C7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FCB84120A46E370051A9C7 /* User.swift */; };
+		77FCB84520A473190051A9C7 /* ExtViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FCB84420A473190051A9C7 /* ExtViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,9 @@
 		77FCB83720A43E400051A9C7 /* Настройки экранов.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Настройки экранов.txt"; path = "../../../../../Downloads/Тестовое задание/Настройки экранов.txt"; sourceTree = "<group>"; };
 		77FCB83A20A441B50051A9C7 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		77FCB83C20A44A840051A9C7 /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
+		77FCB83F20A46DAD0051A9C7 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		77FCB84120A46E370051A9C7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		77FCB84420A473190051A9C7 /* ExtViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,9 +72,9 @@
 			children = (
 				77FCB83520A43E250051A9C7 /* Docs */,
 				77FCB82020A43DC80051A9C7 /* AppDelegate.swift */,
-				77FCB83A20A441B50051A9C7 /* StartViewController.swift */,
-				77FCB82220A43DC80051A9C7 /* ViewController.swift */,
+				77FCB83E20A46D8D0051A9C7 /* ViewControllers */,
 				77FCB83C20A44A840051A9C7 /* Extentions.swift */,
+				77FCB84320A46EA90051A9C7 /* Model */,
 				77FCB82420A43DC80051A9C7 /* Main.storyboard */,
 				77FCB82A20A43DC80051A9C7 /* Assets.xcassets */,
 				77FCB82C20A43DC80051A9C7 /* LaunchScreen.storyboard */,
@@ -85,6 +91,25 @@
 				77FCB83620A43E400051A9C7 /* Техническое задание.txt */,
 			);
 			path = Docs;
+			sourceTree = "<group>";
+		};
+		77FCB83E20A46D8D0051A9C7 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				77FCB83A20A441B50051A9C7 /* StartViewController.swift */,
+				77FCB82220A43DC80051A9C7 /* ViewController.swift */,
+				77FCB84420A473190051A9C7 /* ExtViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		77FCB84320A46EA90051A9C7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				77FCB83F20A46DAD0051A9C7 /* Message.swift */,
+				77FCB84120A46E370051A9C7 /* User.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,9 +188,12 @@
 			files = (
 				77FCB82320A43DC80051A9C7 /* ViewController.swift in Sources */,
 				77FCB83B20A441B50051A9C7 /* StartViewController.swift in Sources */,
+				77FCB84520A473190051A9C7 /* ExtViewController.swift in Sources */,
 				77FCB83D20A44A840051A9C7 /* Extentions.swift in Sources */,
 				77FCB82120A43DC80051A9C7 /* AppDelegate.swift in Sources */,
+				77FCB84020A46DAD0051A9C7 /* Message.swift in Sources */,
 				77FCB82920A43DC80051A9C7 /* Messenger.xcdatamodeld in Sources */,
+				77FCB84220A46E370051A9C7 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,7 +333,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6R6KJ6QT78;
 				INFOPLIST_FILE = Messenger/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pavelburdukovskii.Messenger;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -321,7 +349,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6R6KJ6QT78;
 				INFOPLIST_FILE = Messenger/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pavelburdukovskii.Messenger;
 				PRODUCT_NAME = "$(TARGET_NAME)";
