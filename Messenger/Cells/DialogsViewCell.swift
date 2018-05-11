@@ -14,12 +14,18 @@ class DialogsViewCell : UITableViewCell {
             guard let dialog = dialogs else {
                 return
             }
-            let atributeStringMesaage = NSAttributedString(string: dialog.messageText, attributes: [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 18), NSAttributedStringKey.strokeColor: UIColor.black])
-            let atributeStringDate = NSAttributedString(string: dialog.dateTime, attributes: [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 13), NSAttributedStringKey.strokeColor: UIColor.black])
+            let atributeStringMesaage = NSAttributedString(string: dialog.messageText, attributes: [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 18)])
+            let atributeStringDate = NSAttributedString(string: dialog.dateTime, attributes: [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 13)])
             textDialogs.attributedText = atributeStringMesaage
             dateDialog.attributedText = atributeStringDate
             dateDialog.textAlignment = .right
             textDialogs.textAlignment = .left
+            textDialogs.backgroundColor = .black
+            dateDialog.backgroundColor = .black
+            textDialogs.textColor = .white
+            textDialogs.numberOfLines = 1
+            dateDialog.textColor = .white
+            containerView.layer.cornerRadius = 8
             dateDialog.sizeToFit()
             textDialogs.sizeToFit()
             setUpView()
@@ -27,24 +33,29 @@ class DialogsViewCell : UITableViewCell {
     }
     var containerView : UIView! = {
         var view = UIView()
-        view.backgroundColor = .white
-        view.layer.cornerRadius = 8
         return view
     }()
-    var textDialogs : UITextView! = {
-        var dialog = UITextView()
-        dialog.isEditable = false
-        return dialog
+    var textDialogs : UILabel! = {
+        var dialog = UILabel()
+         return dialog
     }()
-    var dateDialog : UITextView! = {
-        var date  = UITextView()
-        date.isEditable = false
-        return date
+    var dateDialog : UILabel! = {
+        var date  = UILabel()
+         return date
     }()
     override func awakeFromNib() {
         super.awakeFromNib()
         
     }
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+//        sizeToFit()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     func setUpView() -> Void {
         addSubview(containerView)
         containerView.addSubview(textDialogs)
@@ -53,10 +64,11 @@ class DialogsViewCell : UITableViewCell {
         textDialogs.translatesAutoresizingMaskIntoConstraints       = false
         dateDialog.translatesAutoresizingMaskIntoConstraints        = false
         
-        containerView.topAnchor.constraint(equalTo: topAnchor)             .isActive = true
-        containerView.heightAnchor.constraint(equalTo: heightAnchor)       .isActive = true
-        containerView.leadingAnchor.constraint(equalTo: leadingAnchor)     .isActive = true
-        containerView.trailingAnchor.constraint(equalTo: trailingAnchor)   .isActive = true
+        containerView.clipsToBounds = true
+        containerView.topAnchor.constraint(equalTo: topAnchor, constant: 5).isActive = true
+        containerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10).isActive = true
+        containerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10).isActive = true
+        containerView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5).isActive = true
         
         textDialogs.topAnchor.constraint(equalTo: containerView.topAnchor) .isActive = true
         textDialogs.leftAnchor.constraint(equalTo: containerView.leftAnchor).isActive = true
@@ -68,4 +80,5 @@ class DialogsViewCell : UITableViewCell {
         dateDialog.leftAnchor.constraint(equalTo: containerView.leftAnchor) .isActive = true
         dateDialog.rightAnchor.constraint(equalTo: containerView.rightAnchor).isActive = true
     }
+
 }

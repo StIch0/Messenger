@@ -19,15 +19,15 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let controller = CurrentDialogsViewController()
+        navigationController?.pushViewController(controller, animated: true)
     }
     func deleteItem (at indexPath : IndexPath)->UIContextualAction{
-        let action = UIContextualAction(style: .destructive, title: "Delete"){
+        let action = UIContextualAction(style: .destructive, title: ""){
             (action, view, completion) in
             self.dialogs.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
             completion(true)
-        
         }
         action.image = #imageLiteral(resourceName: "iconDelete")
         
@@ -36,5 +36,8 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let delete = deleteItem(at: indexPath)
         return UISwipeActionsConfiguration(actions: [delete])
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
     }
 }

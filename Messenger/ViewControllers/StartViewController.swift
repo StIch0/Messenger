@@ -14,6 +14,7 @@ class StartViewController : UIViewController {
         image.layer.shadowOffset = CGSize(width: 0.2, height: 0.2)
         image.layer.shadowColor = UIColor(rgb: 0x000000, alfa: 0.5).cgColor
         image.layer.shadowRadius = 4
+        image.clipsToBounds = false
         return image
     }()
     
@@ -27,11 +28,8 @@ class StartViewController : UIViewController {
         button.setTitleShadowColor(UIColor.init(rgb: 0xFFFFFF, alfa: 1), for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         button.titleLabel?.textColor = UIColor(rgb: 0xFFFFFF, alfa: 1)
-        print(button.frame.height)
-        print(button.bounds.height)
-        print(button.layer.frame.height)
-        print(button.layer.bounds.height)
-        button.layer.cornerRadius = button.bounds.height
+        button.translatesAutoresizingMaskIntoConstraints = false
+        
         return button
     }()
     override func viewDidLoad() {
@@ -49,20 +47,31 @@ class StartViewController : UIViewController {
         startImage.translatesAutoresizingMaskIntoConstraints = false
         startImage.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         startImage.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        startImage.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        startImage.contentMode = .scaleAspectFill
+    
+        startImage.sizeToFit()
     }
 
     func seUpButtonView(){
         view.addSubview(inputButton)
+        
         inputButton.translatesAutoresizingMaskIntoConstraints = false
-        inputButton.bottomAnchor.constraint(equalTo: view.bottomAnchor)              .isActive = true
-        inputButton.trailingAnchor.constraint(equalTo: startImage.trailingAnchor)    .isActive = true
-        inputButton.leadingAnchor.constraint(equalTo: startImage.leadingAnchor)      .isActive = true
-        inputButton.heightAnchor.constraint(equalTo: startImage.heightAnchor)        .isActive = true
+        inputButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -15) .isActive = true
+        inputButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
+        inputButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+        inputButton.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.08)        .isActive = true
         inputButton.addTarget(self, action: #selector(loadMainView), for: .touchDown)
+        
+        inputButton.layer.cornerRadius = UIScreen.main.bounds.height * 0.08 / 2
+        print(inputButton.heightAnchor)
+        print(inputButton.bounds.height)
+        print(inputButton.layer.frame.height)
+        print(inputButton.layer.bounds.height)
     }
     
     @objc func loadMainView (){
         let viewController : ViewController = ViewController()
-        navigationController?.setViewControllers([viewController], animated: true)
-    }
+        navigationController?.pushViewController(viewController, animated: true)
+     }
 }
