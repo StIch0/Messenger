@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		77FA9A8820A55A160070F911 /* DialogsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FA9A8720A55A160070F911 /* DialogsViewCell.swift */; };
+		77FA9A8A20A593140070F911 /* CurrentDialogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FA9A8920A593140070F911 /* CurrentDialogsViewController.swift */; };
 		77FCB82120A43DC80051A9C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FCB82020A43DC80051A9C7 /* AppDelegate.swift */; };
 		77FCB82320A43DC80051A9C7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FCB82220A43DC80051A9C7 /* ViewController.swift */; };
 		77FCB82620A43DC80051A9C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77FCB82420A43DC80051A9C7 /* Main.storyboard */; };
@@ -23,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		77FA9A8720A55A160070F911 /* DialogsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogsViewCell.swift; sourceTree = "<group>"; };
+		77FA9A8920A593140070F911 /* CurrentDialogsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentDialogsViewController.swift; sourceTree = "<group>"; };
 		77FCB81D20A43DC80051A9C7 /* Messenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Messenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77FCB82020A43DC80051A9C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		77FCB82220A43DC80051A9C7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -72,6 +76,7 @@
 			children = (
 				77FCB83520A43E250051A9C7 /* Docs */,
 				77FCB82020A43DC80051A9C7 /* AppDelegate.swift */,
+				77FA9A8720A55A160070F911 /* DialogsViewCell.swift */,
 				77FCB83E20A46D8D0051A9C7 /* ViewControllers */,
 				77FCB83C20A44A840051A9C7 /* Extentions.swift */,
 				77FCB84320A46EA90051A9C7 /* Model */,
@@ -96,6 +101,7 @@
 		77FCB83E20A46D8D0051A9C7 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				77FA9A8920A593140070F911 /* CurrentDialogsViewController.swift */,
 				77FCB83A20A441B50051A9C7 /* StartViewController.swift */,
 				77FCB82220A43DC80051A9C7 /* ViewController.swift */,
 				77FCB84420A473190051A9C7 /* ExtViewController.swift */,
@@ -186,9 +192,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77FA9A8A20A593140070F911 /* CurrentDialogsViewController.swift in Sources */,
 				77FCB82320A43DC80051A9C7 /* ViewController.swift in Sources */,
 				77FCB83B20A441B50051A9C7 /* StartViewController.swift in Sources */,
 				77FCB84520A473190051A9C7 /* ExtViewController.swift in Sources */,
+				77FA9A8820A55A160070F911 /* DialogsViewCell.swift in Sources */,
 				77FCB83D20A44A840051A9C7 /* Extentions.swift in Sources */,
 				77FCB82120A43DC80051A9C7 /* AppDelegate.swift in Sources */,
 				77FCB84020A46DAD0051A9C7 /* Message.swift in Sources */,

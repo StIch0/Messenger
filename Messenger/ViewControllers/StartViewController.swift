@@ -54,7 +54,7 @@ class StartViewController : UIViewController {
     func seUpButtonView(){
         view.addSubview(inputButton)
         inputButton.translatesAutoresizingMaskIntoConstraints = false
-        inputButton.bottomAnchor.constraint(equalTo: view.bottomAnchor)         .isActive = true
+        inputButton.bottomAnchor.constraint(equalTo: view.bottomAnchor)              .isActive = true
         inputButton.trailingAnchor.constraint(equalTo: startImage.trailingAnchor)    .isActive = true
         inputButton.leadingAnchor.constraint(equalTo: startImage.leadingAnchor)      .isActive = true
         inputButton.heightAnchor.constraint(equalTo: startImage.heightAnchor)        .isActive = true

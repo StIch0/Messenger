@@ -12,8 +12,16 @@ class ViewController: UIViewController {
     var activityIndicator : UIActivityIndicatorView!
     var backView : UIView!
     var tableView : UITableView!
+    
+    var dialogs : [Message] = Array()
+    let currentDateTime = Date()
+    let formater = DateFormatter()
     override func viewDidLoad() {
         super.viewDidLoad()
+        formater.timeStyle = .medium
+        formater.dateStyle = .long
+        formater.dateFormat = "HH:mm"
+        dialogs.append(Message(messageText: "adaddad", dateTime: formater.string(from: currentDateTime)))
         setUpNavBar()
         setUpTableView()
         view.backgroundColor = .white
@@ -35,6 +43,7 @@ class ViewController: UIViewController {
         view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.register(DialogsViewCell.self, forCellReuseIdentifier: "dialogCell")
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.alwaysBounceVertical = true
         tableView.showsVerticalScrollIndicator = true
@@ -46,11 +55,39 @@ class ViewController: UIViewController {
      }
     
     func setUpNavBar (){
+        
         let navBar  = navigationController?.navigationBar
         navBar?.barStyle = .default
         navBar?.layer.shadowColor = UIColor(rgb: 0x000000, alfa: 0.38).cgColor
         navBar?.layer.shadowOffset = CGSize(width: 0.2, height: 0.2)
         navBar?.layer.shadowRadius = 7
+        let add = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addDialogs))
+        navigationItem.rightBarButtonItem = add
+    }
+    @objc func addDialogs(){
+        print("1")
+        let alert : UIAlertController = UIAlertController(title: "Диалогов не найдено", message: "", preferredStyle: .alert)
+        alert.addTextField(configurationHandler: {
+            mes in
+            mes.placeholder = "Введите сообщение"
+        })
+        print("2")
+        let actionAlert = UIAlertAction(title: "Добавить", style: .default){
+           action in
+            print("qewqeqewq")
+            action.isEnabled = true
+            let message = alert.textFields![0]
+            print(message.text)
+            if message.text != ""  {
+                self.dialogs.append(Message(messageText: (message.text)!, dateTime: self.formater.string(from: self.currentDateTime)))
+                self.tableView.reloadData()
+            }
+            else {
+                action.isEnabled = false
+            }
+        }
+        alert.addAction(actionAlert)
+        present(alert, animated: true, completion: nil)
     }
     func setUpActivityIndicatorView(){
 //        activityIndicator =  UIImageView(image: #imageLiteral(resourceName: "activityIndicator"))

@@ -10,13 +10,31 @@ import Foundation
 import UIKit
 extension ViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell : DialogsViewCell = tableView.dequeueReusableCell(withIdentifier: "dialogCell", for: indexPath) as! DialogsViewCell
+        cell.dialogs = dialogs[indexPath.row]
+        return cell
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return dialogs.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+    }
+    func deleteItem (at indexPath : IndexPath)->UIContextualAction{
+        let action = UIContextualAction(style: .destructive, title: "Delete"){
+            (action, view, completion) in
+            self.dialogs.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            completion(true)
+        
+        }
+        action.image = #imageLiteral(resourceName: "iconDelete")
+        
+        return action
+    }
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let delete = deleteItem(at: indexPath)
+        return UISwipeActionsConfiguration(actions: [delete])
     }
 }
