@@ -20,7 +20,7 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let controller = CurrentDialogsViewController()
-        controller.dialog = [dialogs[indexPath.row]]
+        controller.dialog.append(dialogs[indexPath.row])
         navigationController?.pushViewController(controller, animated: true)
     }
     

@@ -9,7 +9,7 @@
 import Foundation
 class User {
     var id : Int = 0
-    var message : [Message] = Array()
+//    var message : [Message] = Array()
     init(id :Int) {
         self.id = id
     }
