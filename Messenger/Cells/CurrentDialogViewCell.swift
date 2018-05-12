@@ -30,10 +30,12 @@ class CurrentDialogsViewCell: UICollectionViewCell {
             guard let dialog = dialogs else { return }
             textMessage.text = dialog.messageText
             dateTimeText.text = dialog.dateTime
+            textMessage.font = UIFont.italicSystemFont(ofSize: 15)
         }
     }
     override init(frame: CGRect) {
         super.init(frame: frame)
+        sizeToFit()
         setUpView()
     }
     
@@ -52,10 +54,17 @@ class CurrentDialogsViewCell: UICollectionViewCell {
         dateTimeText = UILabel()
         addSubview(bubbleView)
         bubbleView.addSubview(textMessage)
+        bubbleView.addSubview(dateTimeText)
         bubbleView.layer.cornerRadius = 4
         bubbleView.layer.masksToBounds = true
         bubbleView.backgroundColor = UIColor(rgb: 0xD9D8D8, alfa: 1)
         textMessage.backgroundColor = UIColor(rgb: 0xD9D8D8, alfa: 1)
+        textMessage.isScrollEnabled = false
+        textMessage.isEditable = false
+        dateTimeText.translatesAutoresizingMaskIntoConstraints = false
+        dateTimeText.leftAnchor.constraint(equalTo: bubbleView.rightAnchor).isActive = true
+        dateTimeText.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
+        dateTimeText.heightAnchor.constraint(equalToConstant: 20).isActive = true
 //        textMessage.layer.cornerRadius = 4
 //        textMessage.layer.masksToBounds = true
 //        bubbleView.addSubview(textMessage)
