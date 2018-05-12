@@ -57,14 +57,13 @@ class ViewController: UIViewController {
      }
     
     func setUpNavBar (){
-        
+        navigationController?.title = "Назад"
         let navBar  = navigationController?.navigationBar
         navBar?.barStyle = .default
         navBar?.layer.shadowColor = UIColor(rgb: 0x000000, alfa: 0.38).cgColor
         navBar?.layer.shadowOffset = CGSize(width: 0.2, height: 0.2)
         navBar?.layer.shadowRadius = 7
         let add = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addDialogs))
-        add.title = "Назад"
         navigationItem.rightBarButtonItem = add
         
     }

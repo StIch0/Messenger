@@ -20,8 +20,10 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let controller = CurrentDialogsViewController()
+        controller.dialog = [dialogs[indexPath.row]]
         navigationController?.pushViewController(controller, animated: true)
     }
+    
     func deleteItem (at indexPath : IndexPath)->UIContextualAction{
         let action = UIContextualAction(style: .destructive, title: ""){
             (action, view, completion) in

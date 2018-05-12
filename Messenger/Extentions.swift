@@ -8,13 +8,35 @@
 
 import Foundation
 import UIKit
-//extension UIColor {
-//    struct inputButtonCollor{
-//      static let backgroundColor = UIColor(red: 0xCF, green: 0x1F, blue: 0x28, alpha: 1)
-//      static let shadow = UIColor(red: 0xE4, green: 0x22, blue: 0x2D, alpha: 0.5).cgColor
-////        static let shadow = CGColor(colorSpace: CGColorSpace, components: <#T##UnsafePointer<CGFloat>#>)
-//    }
-//}
+extension CurrentDialogsViewController
+{
+    func setUpKeyBoardObservers ()
+    {
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    @objc func handleKeyboardWillShow (notification : NSNotification)
+    {
+        let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect
+        inputViewBottomAnchor?.constant = -(keyboardFrame?.height)!
+        let keyboardDuration = (notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as AnyObject).doubleValue
+        
+        UIView.animate(withDuration: keyboardDuration!, animations: {
+            self.view.layoutIfNeeded()
+        })
+    }
+    
+   @objc func handleKeyboardWillHide (notification : NSNotification) {
+        inputViewBottomAnchor?.constant = 0
+    
+        let keyboardDuration = (notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as AnyObject).doubleValue
+        UIView.animate(withDuration: keyboardDuration!, animations: {
+            self.view.layoutIfNeeded()
+        })
+    }
+}
 extension UIColor {
     convenience init(red: Int, green: Int, blue: Int, alfa : CGFloat) {
         assert(red >= 0 && red <= 255, "Invalid red component")
@@ -31,5 +53,21 @@ extension UIColor {
             blue: rgb & 0xFF,
             alfa: alfa
         )
+    }
+}
+extension UIViewController
+{
+    func hideKeyboard()
+    {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(
+            target: self,
+            action: #selector(UIViewController.dismissKeyboard))
+        
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard()
+    {
+        view.endEditing(true)
     }
 }
