@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import CoreData
 class ViewController: UIViewController {
     var activityIndicator : UIActivityIndicatorView!
     var backView : UIView!
@@ -84,8 +84,38 @@ class ViewController: UIViewController {
              action.isEnabled = true
             let message = alert.textFields![0]
             if message.text! != ""  {
-                self.dialogs.append(
-                    Message(messageText: (message.text)!, dateTime: self.formater.string(from: self.currentDateTime), user: User(id: arc4random_uniform(2))))
+                let manageContext = DatabaseManager.shared.persistentContainer.viewContext
+                //create user core date
+                let userEntity = NSEntityDescription.entity(forEntityName: "User", in: manageContext)
+                let userObject = NSManagedObject(entity: userEntity!, insertInto: manageContext)
+                
+                //create message core date
+                let messageEntity = NSEntityDescription.entity(forEntityName: "Message", in: manageContext)
+                let messageObject = NSManagedObject(entity: messageEntity!, insertInto: manageContext)
+
+                let id = arc4random_uniform(2)
+                let newUser = User(id: id)
+                
+                //set value to userObject for save
+                userObject.setValue(id, forKey: "id")
+                let dateTime = self.formater.string(from: self.currentDateTime)
+                let newDialog =  Message(messageText: (message.text)!, dateTime: dateTime, user: newUser)
+                
+                //set value to messageObject for save
+                messageObject.setValue(message.text!, forKey: "textMessage")
+                messageObject.setValue(dateTime, forKey: "dateTime")
+                messageObject.setValue(newUser, forKey: "user")
+                
+                self.dialogs.append(newDialog)
+                
+                //save data
+                do {
+                    try manageContext.save()
+                }
+                catch let error as NSError {
+                    print("Error = ", error.localizedDescription)
+                }
+                
                 self.tableView.reloadData()
             }
             else {

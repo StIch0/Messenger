@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class Message {
+class Message{
     var messageText : String
     var dateTime    : String
     var user : User

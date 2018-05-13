@@ -100,7 +100,7 @@ class CurrentDialogsViewController: UIViewController {
     
     @objc func sendMessageBtn(){
         if textMessage.text != "" {
-            var id = (arc4random_uniform(2))
+            let id = (arc4random_uniform(2))
             print(arc4random_uniform(2))
             let newMessage = Message(messageText: textMessage.text!, dateTime: formater.string(from: currentDateTime), user: User(id : id))
             print("message  = " , newMessage.messageText)
