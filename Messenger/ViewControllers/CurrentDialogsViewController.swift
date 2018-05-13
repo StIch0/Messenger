@@ -18,12 +18,19 @@ class CurrentDialogsViewController: UIViewController {
     let currentDateTime = Date()
     let formater = DateFormatter()
     var layout : UICollectionViewFlowLayout!
+    var user : User? {
+        didSet {
+            guard let mesDialog = user?.message?.anyObject() as? [Message] else { return }
+            dialog = mesDialog
+        }
+    }
+    let manageContext = DatabaseManager.shared.persistentContainer.viewContext
     override func viewDidLoad() {
         super.viewDidLoad()
         formater.timeStyle = .medium
         formater.dateStyle = .long
         formater.dateFormat = "HH:mm"
-        print(dialog.first?.messageText)
+//        print(dialog.first?.messageText)
         //dialog.append(Message(messageText: (dialog.first?.messageText)!, dateTime: (dialog.first?.dateTime)!))
         view.backgroundColor = .white
         layout = UICollectionViewFlowLayout()
@@ -33,6 +40,7 @@ class CurrentDialogsViewController: UIViewController {
         setUpCollectionView()
         setUpKeyBoardObservers()
         hideKeyboard()
+        
 //        var user0 = User(id: 0)
 //        var user1 = User(id: 1)
     }
@@ -100,10 +108,15 @@ class CurrentDialogsViewController: UIViewController {
     
     @objc func sendMessageBtn(){
         if textMessage.text != "" {
-            let id = (arc4random_uniform(2))
-            print(arc4random_uniform(2))
-            let newMessage = Message(messageText: textMessage.text!, dateTime: formater.string(from: currentDateTime), user: User(id : id))
-            print("message  = " , newMessage.messageText)
+            let dateTime = formater.string(from: currentDateTime)
+            let id = (arc4random_uniform(100))
+            user = User(context: manageContext)
+            user?.id = Int32(id)
+            let newMessage = Message(context: manageContext)
+            newMessage.textMessage = textMessage.text!
+            newMessage.dateTime = dateTime
+            newMessage.user = user
+            print("message  = " , newMessage.textMessage)
         dialog.append(newMessage)
         
         textMessage.text = ""

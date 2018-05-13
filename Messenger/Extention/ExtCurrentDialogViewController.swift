@@ -13,22 +13,25 @@ extension CurrentDialogsViewController : UICollectionViewDelegate, UICollectionV
         let cell : CurrentDialogsViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cuurentMessageCell", for: indexPath) as! CurrentDialogsViewCell
         cell.dialogs = dialog[indexPath.row]
         
-        let messText = dialog[indexPath.item].messageText
+        if let messText = dialog[indexPath.item].textMessage{
         let size = CGSize(width: 250, height: 1000)
         let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
         let estimatedFrame = NSString(string: messText).boundingRect(with: size, options: options, attributes: [:], context: nil)
  
         cell.textMessage.frame = CGRect(x: 5, y: 0, width: estimatedFrame.width + 10 + 30, height: estimatedFrame.height + 15)
         cell.bubbleView.frame = CGRect(x: 10, y: 0, width: estimatedFrame.width + 10 + 35 , height: estimatedFrame.height + 15 + 10)
-        
+        }
         //different users
-        if cell.dialogs?.user.id == 0 {
+        if let id = cell.dialogs?.user?.id {
+            if id == 0 {
             cell.bubbleView.backgroundColor = .red
             cell.textMessage.backgroundColor = .red
         }
         else {
             cell.textMessage.backgroundColor = .green
             cell.bubbleView.backgroundColor = .green
+            }
+            
         }
 //        collectionView.scrollToItem(at: indexPath, at: .bottom, animated: true)
         return cell
@@ -43,11 +46,15 @@ extension CurrentDialogsViewController : UICollectionViewDelegate, UICollectionV
         return CGFloat(10)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-         let messText = dialog[indexPath.item].messageText
+        if let messText = dialog[indexPath.item].textMessage{
             let size = CGSize(width: view.frame.width, height: 1000)
             let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
         let estimatedFrame = NSString(string: messText).boundingRect(with: size, options: options, attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 15)], context: nil)
-        return CGSize(width: view.frame.width, height: estimatedFrame.height + 30)
+            return CGSize(width: view.frame.width, height: estimatedFrame.height + 30)
+            
+        }
+        return CGSize(width: view.frame.width, height: view.frame.width)
+
     }
     override func viewDidLayoutSubviews() {
         let section = 0

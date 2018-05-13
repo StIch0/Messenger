@@ -14,8 +14,8 @@ class DialogsViewCell : UITableViewCell {
             guard let dialog = dialogs else {
                 return
             }
-            let atributeStringMesaage = NSAttributedString(string: dialog.messageText, attributes: [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 18)])
-            let atributeStringDate = NSAttributedString(string: dialog.dateTime, attributes: [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 13)])
+            let atributeStringMesaage = NSAttributedString(string: dialog.textMessage!, attributes: [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 18)])
+            let atributeStringDate = NSAttributedString(string: dialog.dateTime!, attributes: [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 13)])
             textDialogs.attributedText = atributeStringMesaage
             dateDialog.attributedText = atributeStringDate
             dateDialog.textAlignment = .right

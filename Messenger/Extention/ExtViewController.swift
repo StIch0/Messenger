@@ -27,12 +27,18 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
     func deleteItem (at indexPath : IndexPath)->UIContextualAction{
         let action = UIContextualAction(style: .destructive, title: ""){
             (action, view, completion) in
+            self.manageContext.delete(self.dialogs[indexPath.row])
             self.dialogs.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                 do {
+                    try self.manageContext.save()
+                }
+                catch let error {
+                    print("Error = " ,error.localizedDescription)
+                }
             completion(true)
         }
         action.image = #imageLiteral(resourceName: "iconDelete")
-        
         return action
     }
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {

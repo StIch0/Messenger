@@ -16,6 +16,8 @@ class ViewController: UIViewController {
     var dialogs : [Message] = Array()
     let currentDateTime = Date()
     let formater = DateFormatter()
+//    var myself : User?
+    let manageContext = DatabaseManager.shared.persistentContainer.viewContext
     override func viewDidLoad() {
         super.viewDidLoad()
         formater.timeStyle = .medium
@@ -23,12 +25,56 @@ class ViewController: UIViewController {
         formater.dateFormat = "HH:mm"
         setUpNavBar()
         setUpTableView()
+        loadData()
         view.backgroundColor = .white
         title = "Чаты"
+//        myself = User(context: manageContext)
+    }
+    func loadData (){
+        
+        if let users = fetchUser(){
+        for user in users {
+            let request : NSFetchRequest<Message> = Message.fetchRequest()
+            request.sortDescriptors = [NSSortDescriptor(key: "dateTime", ascending: false)]
+            print(user.id)
+//            let predicate = NSPredicate(format: "user.id = %@")
+//            request.predicate = predicate
+//            request.fetchLimit = 1
+            
+            do {
+                let mes = try manageContext.fetch(request)
+                dialogs = mes
+            }
+            catch let error {
+                print("Error = ", error.localizedDescription)
+            }
+            }
+            
+        }
+//        request.predicate = NSPredicate(format: "id = %@",0)
         
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
+    
+    func fetchUser () ->[User]?{
+        let request : NSFetchRequest<User> = User.fetchRequest()
+        request.fetchLimit = 1
+        //        request.predicate = NSPredicate(format: "id = %@",0)
+        do {
+            let user = try manageContext.fetch(request)
+            return user
+         }
+        catch let error {
+            print("Error = ", error.localizedDescription)
+        }
+        return nil
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        do {
+            try manageContext.save()
+        } catch let error {
+            print("Error = ", error.localizedDescription)
+        }
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
@@ -84,36 +130,32 @@ class ViewController: UIViewController {
              action.isEnabled = true
             let message = alert.textFields![0]
             if message.text! != ""  {
-                let manageContext = DatabaseManager.shared.persistentContainer.viewContext
                 //create user core date
-                let userEntity = NSEntityDescription.entity(forEntityName: "User", in: manageContext)
-                let userObject = NSManagedObject(entity: userEntity!, insertInto: manageContext)
+                let userEntity = NSEntityDescription.entity(forEntityName: "User", in: self.manageContext)
+                let userObject = NSManagedObject(entity: userEntity!, insertInto: self.manageContext) as! User
                 
                 //create message core date
-                let messageEntity = NSEntityDescription.entity(forEntityName: "Message", in: manageContext)
-                let messageObject = NSManagedObject(entity: messageEntity!, insertInto: manageContext)
+                let messageEntity = NSEntityDescription.entity(forEntityName: "Message", in: self.manageContext)
+                let messageObject = NSManagedObject(entity: messageEntity!, insertInto: self.manageContext) as! Message
 
-                let id = arc4random_uniform(2)
-                let newUser = User(id: id)
-                
+                let id = 0
+
                 //set value to userObject for save
                 userObject.setValue(id, forKey: "id")
                 let dateTime = self.formater.string(from: self.currentDateTime)
-                let newDialog =  Message(messageText: (message.text)!, dateTime: dateTime, user: newUser)
-                
-                //set value to messageObject for save
+//                //set value to messageObject for save
                 messageObject.setValue(message.text!, forKey: "textMessage")
                 messageObject.setValue(dateTime, forKey: "dateTime")
-                messageObject.setValue(newUser, forKey: "user")
+                messageObject.setValue(userObject, forKey: "user")
                 
-                self.dialogs.append(newDialog)
+                self.dialogs.append(messageObject)
                 
-                //save data
+                self.dialogs.sort(by: { $0.dateTime! > $1.dateTime! })
                 do {
-                    try manageContext.save()
+                    try self.manageContext.save()
                 }
-                catch let error as NSError {
-                    print("Error = ", error.localizedDescription)
+                catch let error {
+                    print("Error = " ,error.localizedDescription)
                 }
                 
                 self.tableView.reloadData()

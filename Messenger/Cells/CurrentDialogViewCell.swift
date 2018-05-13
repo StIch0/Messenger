@@ -28,7 +28,7 @@ class CurrentDialogsViewCell: UICollectionViewCell {
     var dialogs : Message? {
         didSet {
             guard let dialog = dialogs else { return }
-            textMessage.text = dialog.messageText
+            textMessage.text = dialog.textMessage
             dateTimeText.text = dialog.dateTime
             textMessage.font = UIFont.italicSystemFont(ofSize: 15)
         }

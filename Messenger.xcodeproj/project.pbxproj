@@ -12,6 +12,10 @@
 		77FA9A8C20A5D42B0070F911 /* ExtCurrentDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FA9A8B20A5D42B0070F911 /* ExtCurrentDialogViewController.swift */; };
 		77FA9A9020A6D2FD0070F911 /* CurrentDialogViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FA9A8F20A6D2FD0070F911 /* CurrentDialogViewCell.swift */; };
 		77FA9A9220A8074C0070F911 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FA9A9120A8074C0070F911 /* DatabaseManager.swift */; };
+		77FA9AA920A828A30070F911 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FA9AA520A828A30070F911 /* User+CoreDataClass.swift */; };
+		77FA9AAA20A828A30070F911 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FA9AA620A828A30070F911 /* User+CoreDataProperties.swift */; };
+		77FA9AAB20A828A30070F911 /* Message+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FA9AA720A828A30070F911 /* Message+CoreDataClass.swift */; };
+		77FA9AAC20A828A30070F911 /* Message+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FA9AA820A828A30070F911 /* Message+CoreDataProperties.swift */; };
 		77FCB82120A43DC80051A9C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FCB82020A43DC80051A9C7 /* AppDelegate.swift */; };
 		77FCB82320A43DC80051A9C7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FCB82220A43DC80051A9C7 /* ViewController.swift */; };
 		77FCB82620A43DC80051A9C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77FCB82420A43DC80051A9C7 /* Main.storyboard */; };
@@ -33,6 +37,10 @@
 		77FA9A8B20A5D42B0070F911 /* ExtCurrentDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtCurrentDialogViewController.swift; sourceTree = "<group>"; };
 		77FA9A8F20A6D2FD0070F911 /* CurrentDialogViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentDialogViewCell.swift; sourceTree = "<group>"; };
 		77FA9A9120A8074C0070F911 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		77FA9AA520A828A30070F911 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
+		77FA9AA620A828A30070F911 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		77FA9AA720A828A30070F911 /* Message+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Message+CoreDataClass.swift"; sourceTree = "<group>"; };
+		77FA9AA820A828A30070F911 /* Message+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Message+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		77FCB81D20A43DC80051A9C7 /* Messenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Messenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77FCB82020A43DC80051A9C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		77FCB82220A43DC80051A9C7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -137,6 +145,10 @@
 		77FCB84320A46EA90051A9C7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				77FA9AA520A828A30070F911 /* User+CoreDataClass.swift */,
+				77FA9AA620A828A30070F911 /* User+CoreDataProperties.swift */,
+				77FA9AA720A828A30070F911 /* Message+CoreDataClass.swift */,
+				77FA9AA820A828A30070F911 /* Message+CoreDataProperties.swift */,
 				77FCB83F20A46DAD0051A9C7 /* Message.swift */,
 				77FCB84120A46E370051A9C7 /* User.swift */,
 			);
@@ -223,13 +235,17 @@
 				77FCB83B20A441B50051A9C7 /* StartViewController.swift in Sources */,
 				77FCB84520A473190051A9C7 /* ExtViewController.swift in Sources */,
 				77FA9A8820A55A160070F911 /* DialogsViewCell.swift in Sources */,
+				77FA9AA920A828A30070F911 /* User+CoreDataClass.swift in Sources */,
 				77FA9A8C20A5D42B0070F911 /* ExtCurrentDialogViewController.swift in Sources */,
+				77FA9AAA20A828A30070F911 /* User+CoreDataProperties.swift in Sources */,
 				77FCB83D20A44A840051A9C7 /* Extentions.swift in Sources */,
+				77FA9AAC20A828A30070F911 /* Message+CoreDataProperties.swift in Sources */,
 				77FCB82120A43DC80051A9C7 /* AppDelegate.swift in Sources */,
 				77FA9A9020A6D2FD0070F911 /* CurrentDialogViewCell.swift in Sources */,
 				77FCB84020A46DAD0051A9C7 /* Message.swift in Sources */,
 				77FCB82920A43DC80051A9C7 /* Messenger.xcdatamodeld in Sources */,
 				77FCB84220A46E370051A9C7 /* User.swift in Sources */,
+				77FA9AAB20A828A30070F911 /* Message+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
