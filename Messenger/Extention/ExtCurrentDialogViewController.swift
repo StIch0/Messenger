@@ -20,7 +20,17 @@ extension CurrentDialogsViewController : UICollectionViewDelegate, UICollectionV
  
         cell.textMessage.frame = CGRect(x: 5, y: 0, width: estimatedFrame.width + 10 + 30, height: estimatedFrame.height + 15)
         cell.bubbleView.frame = CGRect(x: 10, y: 0, width: estimatedFrame.width + 10 + 35 , height: estimatedFrame.height + 15 + 10)
-
+        
+        //different users
+        if cell.dialogs?.user.id == 0 {
+            cell.bubbleView.backgroundColor = .red
+            cell.textMessage.backgroundColor = .red
+        }
+        else {
+            cell.textMessage.backgroundColor = .green
+            cell.bubbleView.backgroundColor = .green
+        }
+//        collectionView.scrollToItem(at: indexPath, at: .bottom, animated: true)
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -39,5 +49,10 @@ extension CurrentDialogsViewController : UICollectionViewDelegate, UICollectionV
         let estimatedFrame = NSString(string: messText).boundingRect(with: size, options: options, attributes: [NSAttributedStringKey.font : UIFont.systemFont(ofSize: 15)], context: nil)
         return CGSize(width: view.frame.width, height: estimatedFrame.height + 30)
     }
-    
+    override func viewDidLayoutSubviews() {
+        let section = 0
+        let lastItemIndex = self.collectionView.numberOfItems(inSection: section) - 1
+        let indexPath:NSIndexPath = NSIndexPath(item: lastItemIndex, section: section)
+        self.collectionView.scrollToItem(at: indexPath as IndexPath, at: .bottom, animated: true)
+    }
 }

@@ -10,8 +10,10 @@ import Foundation
 class Message {
     var messageText : String
     var dateTime    : String
-    init(messageText :String, dateTime : String) {
+    var user : User
+    init(messageText :String, dateTime : String, user : User) {
         self.messageText = messageText
         self.dateTime = dateTime
+        self.user = user
     }
 }

@@ -33,8 +33,8 @@ class CurrentDialogsViewController: UIViewController {
         setUpCollectionView()
         setUpKeyBoardObservers()
         hideKeyboard()
-        var user0 = User(id: 0)
-        var user1 = User(id: 1)
+//        var user0 = User(id: 0)
+//        var user1 = User(id: 1)
     }
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
@@ -100,14 +100,15 @@ class CurrentDialogsViewController: UIViewController {
     
     @objc func sendMessageBtn(){
         if textMessage.text != "" {
-        let newMessage = Message(messageText: textMessage.text!, dateTime: formater.string(from: currentDateTime))
+            var id = (arc4random_uniform(2))
+            print(arc4random_uniform(2))
+            let newMessage = Message(messageText: textMessage.text!, dateTime: formater.string(from: currentDateTime), user: User(id : id))
             print("message  = " , newMessage.messageText)
         dialog.append(newMessage)
         
         textMessage.text = ""
         collectionView.reloadData()
         
-        print(arc4random_uniform(2))
             //        dismissKeyboard()
             
         }

@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     var activityIndicator : UIActivityIndicatorView!
     var backView : UIView!
     var tableView : UITableView!
-    
+    var titleAlert : String = ""
     var dialogs : [Message] = Array()
     let currentDateTime = Date()
     let formater = DateFormatter()
@@ -21,12 +21,11 @@ class ViewController: UIViewController {
         formater.timeStyle = .medium
         formater.dateStyle = .long
         formater.dateFormat = "HH:mm"
-        dialogs.append(Message(messageText: "adaddad", dateTime: formater.string(from: currentDateTime)))
-        dialogs.append(Message(messageText: "qwertyuiopoiuesdfghjklbvcxcvbnmqwertyuiopoiuesdfghjklbvcxcvbnmqwertyuiopoiuesdfghjklbvcxcvbnmqwertyuiopoiuesdfghjklbvcxcvbnmqwertyuiopoiuesdfghjklbvcxcvbnmqwertyuiopoiuesdfghjklbvcxcvbnm", dateTime: formater.string(from: currentDateTime)))
         setUpNavBar()
         setUpTableView()
         view.backgroundColor = .white
         title = "Чаты"
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -57,18 +56,25 @@ class ViewController: UIViewController {
      }
     
     func setUpNavBar (){
-        navigationController?.title = "Назад"
         let navBar  = navigationController?.navigationBar
         navBar?.barStyle = .default
         navBar?.layer.shadowColor = UIColor(rgb: 0x000000, alfa: 0.38).cgColor
         navBar?.layer.shadowOffset = CGSize(width: 0.2, height: 0.2)
         navBar?.layer.shadowRadius = 7
         let add = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addDialogs))
+        add.setBackgroundImage(#imageLiteral(resourceName: "iconAdd"), for: .normal, barMetrics: .default)
+        navBar?.backItem?.title = "Назад"
         navigationItem.rightBarButtonItem = add
         
     }
     @objc func addDialogs(){
-         let alert : UIAlertController = UIAlertController(title: "Диалогов не найдено", message: "", preferredStyle: .alert)
+        if dialogs.count == 0 {
+            titleAlert = "Диалогов не найдено"
+        }
+        else {
+            titleAlert = "Создать новый диалог"
+        }
+         let alert : UIAlertController = UIAlertController(title: titleAlert, message: "", preferredStyle: .alert)
         alert.addTextField(configurationHandler: {
             mes in
             mes.placeholder = "Введите сообщение"
@@ -78,7 +84,8 @@ class ViewController: UIViewController {
              action.isEnabled = true
             let message = alert.textFields![0]
             if message.text! != ""  {
-                self.dialogs.append(Message(messageText: (message.text)!, dateTime: self.formater.string(from: self.currentDateTime)))
+                self.dialogs.append(
+                    Message(messageText: (message.text)!, dateTime: self.formater.string(from: self.currentDateTime), user: User(id: arc4random_uniform(2))))
                 self.tableView.reloadData()
             }
             else {

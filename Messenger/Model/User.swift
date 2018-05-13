@@ -8,9 +8,10 @@
 
 import Foundation
 class User {
-    var id : Int = 0
-//    var message : [Message] = Array()
-    init(id :Int) {
+    var id : UInt32 = 0
+    init(id :UInt32) {
         self.id = id
+    }
+    required init() {
     }
 }
