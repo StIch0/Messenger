@@ -33,13 +33,13 @@ class ViewController: UIViewController {
     func loadData (){
         
         if let users = fetchUser(){
-        for user in users {
+        for obj in users {
+            print(obj.id)
             let request : NSFetchRequest<Message> = Message.fetchRequest()
             request.sortDescriptors = [NSSortDescriptor(key: "dateTime", ascending: false)]
-            print(user.id)
-//            let predicate = NSPredicate(format: "user.id = %@")
-//            request.predicate = predicate
-//            request.fetchLimit = 1
+            let predicate = NSPredicate(format: "user.id == %@", obj.id)
+            request.predicate = predicate
+            request.fetchLimit = 1
             
             do {
                 let mes = try manageContext.fetch(request)
@@ -57,8 +57,6 @@ class ViewController: UIViewController {
     
     func fetchUser () ->[User]?{
         let request : NSFetchRequest<User> = User.fetchRequest()
-        request.fetchLimit = 1
-        //        request.predicate = NSPredicate(format: "id = %@",0)
         do {
             let user = try manageContext.fetch(request)
             return user

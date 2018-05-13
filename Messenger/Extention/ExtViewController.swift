@@ -28,6 +28,7 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
         let action = UIContextualAction(style: .destructive, title: ""){
             (action, view, completion) in
             self.manageContext.delete(self.dialogs[indexPath.row])
+            self.manageContext.delete(self.dialogs[indexPath.row].user!)
             self.dialogs.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
                  do {
