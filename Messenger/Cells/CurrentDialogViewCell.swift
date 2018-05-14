@@ -33,6 +33,11 @@ class CurrentDialogsViewCell: UICollectionViewCell {
             textMessage.font = UIFont.italicSystemFont(ofSize: 15)
         }
     }
+    
+    var RightSideDateAnchor : NSLayoutConstraint = NSLayoutConstraint()
+    var LeftSideDateAnchor : NSLayoutConstraint = NSLayoutConstraint()
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         sizeToFit()
@@ -57,18 +62,20 @@ class CurrentDialogsViewCell: UICollectionViewCell {
         textMessage.backgroundColor = .clear
         
         bubbleView.addSubview(textMessage)
-        bubbleView.addSubview(dateTimeText)
+        addSubview(dateTimeText)
         bubbleView.layer.cornerRadius = 4
         bubbleView.layer.masksToBounds = true
         bubbleView.backgroundColor = UIColor(rgb: 0xD9D8D8, alfa: 1)
-        textMessage.backgroundColor = UIColor(rgb: 0xD9D8D8, alfa: 1)
         textMessage.isScrollEnabled = false
         textMessage.isEditable = false
         
         dateTimeText.translatesAutoresizingMaskIntoConstraints = false
-        dateTimeText.leftAnchor.constraint(equalTo: bubbleView.rightAnchor).isActive = true
-        dateTimeText.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
+        RightSideDateAnchor = dateTimeText.leftAnchor.constraint(equalTo: bubbleView.rightAnchor, constant: 8)
+        LeftSideDateAnchor = dateTimeText.rightAnchor.constraint(equalTo: bubbleView.leftAnchor, constant: -8)
         dateTimeText.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        dateTimeText.bottomAnchor.constraint(equalTo: bubbleView.bottomAnchor, constant: -3).isActive = true
+        dateTimeText.font = UIFont.systemFont(ofSize: 11)
+        dateTimeText.textColor = .black
 //        textMessage.layer.cornerRadius = 4
 //        textMessage.layer.masksToBounds = true
 //        bubbleView.addSubview(textMessage)

@@ -6,12 +6,13 @@
 //  Copyright © 2018 Pavel Burdukovskii. All rights reserved.
 //
 
-import Foundation
-class User {
-    var id : UInt32 = 0
-    init(id :UInt32) {
-        self.id = id
-    }
-    required init() {
-    }
-}
+//import Foundation
+//class User {
+//    var id : UInt32 = 0
+//    init(id :UInt32) {
+//        self.id = id
+//    }
+//    required init() {
+//    }
+//}
+

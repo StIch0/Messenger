@@ -119,6 +119,7 @@ class CurrentDialogsViewController: UIViewController {
         collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor)    .isActive = true
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.backgroundColor = UIColor(rgb: 0xF4F3F3, alfa: 1)
         collectionView.keyboardDismissMode = .onDrag
     }
     

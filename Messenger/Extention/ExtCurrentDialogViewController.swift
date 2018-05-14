@@ -11,7 +11,6 @@ import  UIKit
 extension CurrentDialogsViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell : CurrentDialogsViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cuurentMessageCell", for: indexPath) as! CurrentDialogsViewCell
-        let userDef = UserDefaults.standard
         cell.dialogs = dialog[indexPath.row]
         print("dialog[indexPath.row].textMessage = ", dialog[indexPath.row].textMessage)
         if let messText = dialog[indexPath.item].textMessage{
@@ -20,18 +19,24 @@ extension CurrentDialogsViewController : UICollectionViewDelegate, UICollectionV
         let estimatedFrame = NSString(string: messText).boundingRect(with: size, options: options, attributes: [:], context: nil)
 
         cell.textMessage.frame = CGRect(x: 5, y: 0, width: estimatedFrame.width + 10 + 30, height: estimatedFrame.height + 15)
-        cell.bubbleView.frame = CGRect(x: 10, y: 0, width: estimatedFrame.width + 10 + 35 , height: estimatedFrame.height + 15 + 10)
-        }
+        
         //different users
         print (dialog[indexPath.row].user?.id)
-         let id = dialog[indexPath.row].user?.id
+        let id = dialog[indexPath.row].user?.id
         print("id in collection view cell = ", id)
-            if id  == 0 {
-            cell.bubbleView.backgroundColor = .red
+        if id  == 0 {
+            cell.bubbleView.backgroundColor = UIColor(rgb: 0xD9D8D8, alfa: 1)
+            cell.RightSideDateAnchor.isActive = false
+            cell.LeftSideDateAnchor.isActive = true
+            cell.bubbleView.frame = CGRect(x: UIScreen.main.bounds.width - 10 - (estimatedFrame.width + 10 + 35), y: 0, width: estimatedFrame.width + 10 + 35 , height: estimatedFrame.height + 15 + 10)
         }
         else {
-            cell.bubbleView.backgroundColor = .green
-            }
+            cell.bubbleView.backgroundColor = UIColor(rgb: 0xFFFFFF, alfa: 1)
+            cell.LeftSideDateAnchor.isActive = false
+            cell.RightSideDateAnchor.isActive = true
+            cell.bubbleView.frame = CGRect(x: 10, y: 0, width: estimatedFrame.width + 10 + 35 , height: estimatedFrame.height + 15 + 10)
+        }
+        }
         
     
         
