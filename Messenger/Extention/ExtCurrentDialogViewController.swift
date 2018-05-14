@@ -11,28 +11,30 @@ import  UIKit
 extension CurrentDialogsViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell : CurrentDialogsViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cuurentMessageCell", for: indexPath) as! CurrentDialogsViewCell
+        let userDef = UserDefaults.standard
         cell.dialogs = dialog[indexPath.row]
         print("dialog[indexPath.row].textMessage = ", dialog[indexPath.row].textMessage)
         if let messText = dialog[indexPath.item].textMessage{
         let size = CGSize(width: 250, height: 1000)
         let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
         let estimatedFrame = NSString(string: messText).boundingRect(with: size, options: options, attributes: [:], context: nil)
- 
+
         cell.textMessage.frame = CGRect(x: 5, y: 0, width: estimatedFrame.width + 10 + 30, height: estimatedFrame.height + 15)
         cell.bubbleView.frame = CGRect(x: 10, y: 0, width: estimatedFrame.width + 10 + 35 , height: estimatedFrame.height + 15 + 10)
         }
         //different users
-        if let id = cell.dialogs?.user?.id {
-            if id == 0 {
+        print (dialog[indexPath.row].user?.id)
+         let id = dialog[indexPath.row].user?.id
+        print("id in collection view cell = ", id)
+            if id  == 0 {
             cell.bubbleView.backgroundColor = .red
-            cell.textMessage.backgroundColor = .red
         }
         else {
-            cell.textMessage.backgroundColor = .green
             cell.bubbleView.backgroundColor = .green
             }
-            
-        }
+        
+    
+        
 //        collectionView.scrollToItem(at: indexPath, at: .bottom, animated: true)
         return cell
     }
@@ -53,7 +55,7 @@ extension CurrentDialogsViewController : UICollectionViewDelegate, UICollectionV
             return CGSize(width: view.frame.width, height: estimatedFrame.height + 30)
             
         }
-        return CGSize(width: view.frame.width, height: view.frame.width)
+        return CGSize(width: view.frame.width, height: view.frame.height)
 
     }
 //    override func viewDidLayoutSubviews() {

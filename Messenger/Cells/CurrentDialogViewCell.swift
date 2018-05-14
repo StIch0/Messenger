@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 class CurrentDialogsViewCell: UICollectionViewCell {
     var textMessage : UITextView! = {
-        var textView  = UITextView()
+    var textView  = UITextView()
 //        textView.backgroundColor = UIColor(rgb: 0xD9D8D8, alfa: 1)
         return textView
     }()
@@ -53,6 +53,9 @@ class CurrentDialogsViewCell: UICollectionViewCell {
         textMessage = UITextView()
         dateTimeText = UILabel()
         addSubview(bubbleView)
+        
+        textMessage.backgroundColor = .clear
+        
         bubbleView.addSubview(textMessage)
         bubbleView.addSubview(dateTimeText)
         bubbleView.layer.cornerRadius = 4
@@ -61,6 +64,7 @@ class CurrentDialogsViewCell: UICollectionViewCell {
         textMessage.backgroundColor = UIColor(rgb: 0xD9D8D8, alfa: 1)
         textMessage.isScrollEnabled = false
         textMessage.isEditable = false
+        
         dateTimeText.translatesAutoresizingMaskIntoConstraints = false
         dateTimeText.leftAnchor.constraint(equalTo: bubbleView.rightAnchor).isActive = true
         dateTimeText.rightAnchor.constraint(equalTo: rightAnchor).isActive = true

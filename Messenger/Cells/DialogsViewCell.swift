@@ -15,8 +15,9 @@ class DialogsViewCell : UITableViewCell {
             guard let dialog = dialogs else {
                 return
             }
-            let atributeStringMesaage = NSAttributedString(string: dialog.textMessage!, attributes: [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 18)])
-            let atributeStringDate = NSAttributedString(string: dialog.dateTime!, attributes: [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 13)])
+            if let message = dialog.textMessage , let dateText = dialog.dateTime {
+            let atributeStringMesaage = NSAttributedString(string: message, attributes: [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 18)])
+            let atributeStringDate = NSAttributedString(string: dateText, attributes: [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 13)])
             textDialogs.attributedText = atributeStringMesaage
             dateDialog.attributedText = atributeStringDate
             dateDialog.textAlignment = .right
@@ -29,7 +30,9 @@ class DialogsViewCell : UITableViewCell {
             containerView.layer.cornerRadius = 8
             dateDialog.sizeToFit()
             textDialogs.sizeToFit()
-            setUpView()
+                setUpView()
+                
+            }
         }
     }
     var containerView : UIView! = {

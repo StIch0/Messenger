@@ -23,7 +23,7 @@ class CurrentDialogsViewController: UIViewController {
         didSet {
             guard let mesDialog = user.message?.allObjects as? [Message] else { return }
             dialog = mesDialog
-            navigationItem.title = "\(id)"
+//            navigationItem.title = "\(id)"
         }
     }
     
@@ -45,7 +45,6 @@ class CurrentDialogsViewController: UIViewController {
         sendMessage = UIButton()
         layout = UICollectionViewFlowLayout()
         collectionView = UICollectionView(frame: CGRect.init(x: 0, y: 0, width: view.frame.width, height: view.frame.height), collectionViewLayout: layout)
-//        user = User(context: manageContext)
         
         setUpCollectionView()
         collectionView.reloadData()
@@ -128,28 +127,33 @@ class CurrentDialogsViewController: UIViewController {
             let dateTime = formater.string(from: currentDateTime)
             let index = arc4random_uniform(2)
             print("arrId" , arrId)
+            var idd : Int32 = 0
             if index == 0 {
-                user.id = Int32.init(bitPattern: arrId.first!)
+                idd = Int32(arrId.first!)
             }
             else {
-                user.id = Int32.init(bitPattern: arrId.last!)
+                idd = Int32(arrId.last!)
             }
+            
+            let uuser = User(context: manageContext)
+            
+            uuser.id = Int32(idd)
             let newMessage = Message(context: manageContext)
             newMessage.textMessage = textMessage.text!
             newMessage.dateTime = dateTime
-            newMessage.user = user
+            newMessage.user = uuser
           
         dialog.append(newMessage)
         
         textMessage.text = ""
         collectionView.reloadData()
-            do{
-                try manageContext.save()
-            }
-            catch let error {
-                print("Error = ", error)
-            }
-            //        dismissKeyboard()
+//            do{
+//                try manageContext.save()
+//            }
+//            catch let error {
+//                print("Error = ", error)
+//            }
+//            //        dismissKeyboard()
             
         }
     }
