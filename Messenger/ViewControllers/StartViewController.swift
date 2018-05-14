@@ -64,10 +64,7 @@ class StartViewController : UIViewController {
         inputButton.addTarget(self, action: #selector(loadMainView), for: .touchDown)
         
         inputButton.layer.cornerRadius = UIScreen.main.bounds.height * 0.08 / 2
-        print(inputButton.heightAnchor)
-        print(inputButton.bounds.height)
-        print(inputButton.layer.frame.height)
-        print(inputButton.layer.bounds.height)
+
     }
     
     @objc func loadMainView (){

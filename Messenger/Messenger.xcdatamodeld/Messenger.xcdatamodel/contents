@@ -10,7 +10,7 @@
         <relationship name="message" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Message" inverseName="user" inverseEntity="Message" syncable="YES"/>
     </entity>
     <elements>
-        <element name="User" positionX="-324" positionY="-48" width="128" height="73"/>
         <element name="Message" positionX="-18" positionY="36" width="128" height="88"/>
+        <element name="User" positionX="-324" positionY="-48" width="128" height="73"/>
     </elements>
 </model>

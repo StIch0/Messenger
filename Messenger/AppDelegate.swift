@@ -49,12 +49,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Saves changes in the application's managed object context before the application terminates.
         //save data
         
-        do {
-            try DatabaseManager.shared.persistentContainer.viewContext.save()
-        }
-        catch let error as NSError {
-            print("Error = ", error.localizedDescription)
-        }
+//        do {
+//            try DatabaseManager.shared.persistentContainer.viewContext.save()
+//        }
+//        catch let error as NSError {
+//            print("Error = ", error.localizedDescription)
+//        }
     }
 
     

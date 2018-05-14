@@ -12,6 +12,9 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell : DialogsViewCell = tableView.dequeueReusableCell(withIdentifier: "dialogCell", for: indexPath) as! DialogsViewCell
         cell.dialogs = dialogs[indexPath.row]
+        if let id = dialogs[indexPath.row].user?.id{
+            cell.id = id
+    }
         return cell
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -19,16 +22,25 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! DialogsViewCell
         let controller = CurrentDialogsViewController()
-        controller.dialog.append(dialogs[indexPath.row])
-        navigationController?.pushViewController(controller, animated: true)
+        if controller.id != 0 {
+        controller.user = dialogs[indexPath.row].user
+        controller.id = UInt32(cell.id)
+        print(cell.id)
+            navigationController?.pushViewController(controller, animated: true)
+            
+        }
     }
     
     func deleteItem (at indexPath : IndexPath)->UIContextualAction{
         let action = UIContextualAction(style: .destructive, title: ""){
             (action, view, completion) in
             self.manageContext.delete(self.dialogs[indexPath.row])
-            self.manageContext.delete(self.dialogs[indexPath.row].user!)
+            if let user = self.dialogs[indexPath.row].user {
+                self.manageContext.delete(user)
+                
+            }
             self.dialogs.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
                  do {

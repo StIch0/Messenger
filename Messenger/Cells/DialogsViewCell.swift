@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 class DialogsViewCell : UITableViewCell {
+    var id : Int32 = 0
     var dialogs : Message?  {
         didSet {
             guard let dialog = dialogs else {

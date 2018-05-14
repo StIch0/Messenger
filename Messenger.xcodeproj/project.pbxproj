@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		770AC9BE20A99DAF0007FD1D /* Messenger.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 770AC9BC20A99DAE0007FD1D /* Messenger.xcdatamodeld */; };
 		77FA9A8820A55A160070F911 /* DialogsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FA9A8720A55A160070F911 /* DialogsViewCell.swift */; };
 		77FA9A8A20A593140070F911 /* CurrentDialogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FA9A8920A593140070F911 /* CurrentDialogsViewController.swift */; };
 		77FA9A8C20A5D42B0070F911 /* ExtCurrentDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FA9A8B20A5D42B0070F911 /* ExtCurrentDialogViewController.swift */; };
@@ -19,7 +20,6 @@
 		77FCB82120A43DC80051A9C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FCB82020A43DC80051A9C7 /* AppDelegate.swift */; };
 		77FCB82320A43DC80051A9C7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FCB82220A43DC80051A9C7 /* ViewController.swift */; };
 		77FCB82620A43DC80051A9C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77FCB82420A43DC80051A9C7 /* Main.storyboard */; };
-		77FCB82920A43DC80051A9C7 /* Messenger.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 77FCB82720A43DC80051A9C7 /* Messenger.xcdatamodeld */; };
 		77FCB82B20A43DC80051A9C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77FCB82A20A43DC80051A9C7 /* Assets.xcassets */; };
 		77FCB82E20A43DC80051A9C7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77FCB82C20A43DC80051A9C7 /* LaunchScreen.storyboard */; };
 		77FCB83820A43E400051A9C7 /* Техническое задание.txt in Resources */ = {isa = PBXBuildFile; fileRef = 77FCB83620A43E400051A9C7 /* Техническое задание.txt */; };
@@ -32,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		770AC9BD20A99DAE0007FD1D /* Messenger.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Messenger.xcdatamodel; sourceTree = "<group>"; };
 		77FA9A8720A55A160070F911 /* DialogsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogsViewCell.swift; sourceTree = "<group>"; };
 		77FA9A8920A593140070F911 /* CurrentDialogsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentDialogsViewController.swift; sourceTree = "<group>"; };
 		77FA9A8B20A5D42B0070F911 /* ExtCurrentDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtCurrentDialogViewController.swift; sourceTree = "<group>"; };
@@ -45,7 +46,6 @@
 		77FCB82020A43DC80051A9C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		77FCB82220A43DC80051A9C7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		77FCB82520A43DC80051A9C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		77FCB82820A43DC80051A9C7 /* Messenger.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Messenger.xcdatamodel; sourceTree = "<group>"; };
 		77FCB82A20A43DC80051A9C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		77FCB82D20A43DC80051A9C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		77FCB82F20A43DC80051A9C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -116,9 +116,9 @@
 				77FCB84320A46EA90051A9C7 /* Model */,
 				77FCB82420A43DC80051A9C7 /* Main.storyboard */,
 				77FCB82A20A43DC80051A9C7 /* Assets.xcassets */,
+				770AC9BC20A99DAE0007FD1D /* Messenger.xcdatamodeld */,
 				77FCB82C20A43DC80051A9C7 /* LaunchScreen.storyboard */,
 				77FCB82F20A43DC80051A9C7 /* Info.plist */,
-				77FCB82720A43DC80051A9C7 /* Messenger.xcdatamodeld */,
 			);
 			path = Messenger;
 			sourceTree = "<group>";
@@ -238,12 +238,12 @@
 				77FA9AA920A828A30070F911 /* User+CoreDataClass.swift in Sources */,
 				77FA9A8C20A5D42B0070F911 /* ExtCurrentDialogViewController.swift in Sources */,
 				77FA9AAA20A828A30070F911 /* User+CoreDataProperties.swift in Sources */,
+				770AC9BE20A99DAF0007FD1D /* Messenger.xcdatamodeld in Sources */,
 				77FCB83D20A44A840051A9C7 /* Extentions.swift in Sources */,
 				77FA9AAC20A828A30070F911 /* Message+CoreDataProperties.swift in Sources */,
 				77FCB82120A43DC80051A9C7 /* AppDelegate.swift in Sources */,
 				77FA9A9020A6D2FD0070F911 /* CurrentDialogViewCell.swift in Sources */,
 				77FCB84020A46DAD0051A9C7 /* Message.swift in Sources */,
-				77FCB82920A43DC80051A9C7 /* Messenger.xcdatamodeld in Sources */,
 				77FCB84220A46E370051A9C7 /* User.swift in Sources */,
 				77FA9AAB20A828A30070F911 /* Message+CoreDataClass.swift in Sources */,
 			);
@@ -434,12 +434,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		77FCB82720A43DC80051A9C7 /* Messenger.xcdatamodeld */ = {
+		770AC9BC20A99DAE0007FD1D /* Messenger.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				77FCB82820A43DC80051A9C7 /* Messenger.xcdatamodel */,
+				770AC9BD20A99DAE0007FD1D /* Messenger.xcdatamodel */,
 			);
-			currentVersion = 77FCB82820A43DC80051A9C7 /* Messenger.xcdatamodel */;
+			currentVersion = 770AC9BD20A99DAE0007FD1D /* Messenger.xcdatamodel */;
 			path = Messenger.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

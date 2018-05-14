@@ -12,7 +12,7 @@ extension CurrentDialogsViewController : UICollectionViewDelegate, UICollectionV
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell : CurrentDialogsViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cuurentMessageCell", for: indexPath) as! CurrentDialogsViewCell
         cell.dialogs = dialog[indexPath.row]
-        
+        print("dialog[indexPath.row].textMessage = ", dialog[indexPath.row].textMessage)
         if let messText = dialog[indexPath.item].textMessage{
         let size = CGSize(width: 250, height: 1000)
         let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
@@ -56,10 +56,10 @@ extension CurrentDialogsViewController : UICollectionViewDelegate, UICollectionV
         return CGSize(width: view.frame.width, height: view.frame.width)
 
     }
-    override func viewDidLayoutSubviews() {
-        let section = 0
-        let lastItemIndex = self.collectionView.numberOfItems(inSection: section) - 1
-        let indexPath:NSIndexPath = NSIndexPath(item: lastItemIndex, section: section)
-        self.collectionView.scrollToItem(at: indexPath as IndexPath, at: .bottom, animated: true)
-    }
+//    override func viewDidLayoutSubviews() {
+//        let section = 0
+//        let lastItemIndex = self.collectionView.numberOfItems(inSection: section) - 1
+//        let indexPath:NSIndexPath = NSIndexPath(item: lastItemIndex, section: section)
+//        self.collectionView.scrollToItem(at: indexPath as IndexPath, at: .bottom, animated: true)
+//    }
 }

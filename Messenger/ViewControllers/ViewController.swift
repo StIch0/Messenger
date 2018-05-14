@@ -31,19 +31,20 @@ class ViewController: UIViewController {
 //        myself = User(context: manageContext)
     }
     func loadData (){
-        
+        var mes : [Message] = Array()
         if let users = fetchUser(){
         for obj in users {
             print(obj.id)
+//            manageContext.delete(obj)
             let request : NSFetchRequest<Message> = Message.fetchRequest()
             request.sortDescriptors = [NSSortDescriptor(key: "dateTime", ascending: false)]
-            let predicate = NSPredicate(format: "user.id == %@", obj.id)
+            //this block don't work, i don't know why?????
+            let predicate = NSPredicate(format: "user.id == %@", "\(obj.id)")
             request.predicate = predicate
             request.fetchLimit = 1
-            
+            //end block
             do {
-                let mes = try manageContext.fetch(request)
-                dialogs = mes
+                mes = try manageContext.fetch(request)
             }
             catch let error {
                 print("Error = ", error.localizedDescription)
@@ -51,8 +52,7 @@ class ViewController: UIViewController {
             }
             
         }
-//        request.predicate = NSPredicate(format: "id = %@",0)
-        
+        dialogs = mes
     }
     
     func fetchUser () ->[User]?{
@@ -68,11 +68,6 @@ class ViewController: UIViewController {
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-        do {
-            try manageContext.save()
-        } catch let error {
-            print("Error = ", error.localizedDescription)
-        }
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
@@ -136,8 +131,8 @@ class ViewController: UIViewController {
                 let messageEntity = NSEntityDescription.entity(forEntityName: "Message", in: self.manageContext)
                 let messageObject = NSManagedObject(entity: messageEntity!, insertInto: self.manageContext) as! Message
 
-                let id = 0
-
+                let id = arc4random_uniform(100)+1
+                print("id = ", id)
                 //set value to userObject for save
                 userObject.setValue(id, forKey: "id")
                 let dateTime = self.formater.string(from: self.currentDateTime)

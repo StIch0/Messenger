@@ -17,43 +17,60 @@ class CurrentDialogsViewController: UIViewController {
     var inputViewBottomAnchor : NSLayoutConstraint?
     let currentDateTime = Date()
     let formater = DateFormatter()
+    var id : UInt32 = 100
     var layout : UICollectionViewFlowLayout!
-    var user : User? {
+    var user : User! {
         didSet {
-            guard let mesDialog = user?.message?.anyObject() as? [Message] else { return }
+            guard let mesDialog = user.message?.allObjects as? [Message] else { return }
             dialog = mesDialog
+            navigationItem.title = "\(id)"
         }
     }
+    
+    var arrId : [UInt32] = Array()
     let manageContext = DatabaseManager.shared.persistentContainer.viewContext
     override func viewDidLoad() {
         super.viewDidLoad()
+        arrId.append(id)
+        arrId.append(0)
         formater.timeStyle = .medium
         formater.dateStyle = .long
         formater.dateFormat = "HH:mm"
 //        print(dialog.first?.messageText)
         //dialog.append(Message(messageText: (dialog.first?.messageText)!, dateTime: (dialog.first?.dateTime)!))
         view.backgroundColor = .white
-        layout = UICollectionViewFlowLayout()
+     
         container = UIView()
         textMessage = UITextField()
         sendMessage = UIButton()
-        setUpCollectionView()
-        setUpKeyBoardObservers()
-        hideKeyboard()
+        layout = UICollectionViewFlowLayout()
+        collectionView = UICollectionView(frame: CGRect.init(x: 0, y: 0, width: view.frame.width, height: view.frame.height), collectionViewLayout: layout)
+//        user = User(context: manageContext)
         
+        setUpCollectionView()
+        collectionView.reloadData()
+
+        setUpKeyBoardObservers()
+ 
+        hideKeyboard()
 //        var user0 = User(id: 0)
 //        var user1 = User(id: 1)
     }
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
-         NotificationCenter.default.removeObserver(self)
+        if id == 0 {
+            id = arrId.first!
+        }
+        arrId.removeAll()
+        NotificationCenter.default.removeObserver(self)
     }
     
     
     func setUpCollectionView (){
+
+        collectionView.register(CurrentDialogsViewCell.self, forCellWithReuseIdentifier: "cuurentMessageCell")
+
         
-        collectionView = UICollectionView(frame: CGRect.init(x: 0, y: 0, width: view.frame.width, height: view.frame.height), collectionViewLayout: layout)
-         collectionView.register(CurrentDialogsViewCell.self, forCellWithReuseIdentifier: "cuurentMessageCell")
         view.addSubview(collectionView)
         view.addSubview(container)
         container.addSubview(textMessage)
@@ -109,19 +126,29 @@ class CurrentDialogsViewController: UIViewController {
     @objc func sendMessageBtn(){
         if textMessage.text != "" {
             let dateTime = formater.string(from: currentDateTime)
-            let id = (arc4random_uniform(100))
-            user = User(context: manageContext)
-            user?.id = Int32(id)
+            let index = arc4random_uniform(2)
+            print("arrId" , arrId)
+            if index == 0 {
+                user.id = Int32.init(bitPattern: arrId.first!)
+            }
+            else {
+                user.id = Int32.init(bitPattern: arrId.last!)
+            }
             let newMessage = Message(context: manageContext)
             newMessage.textMessage = textMessage.text!
             newMessage.dateTime = dateTime
             newMessage.user = user
-            print("message  = " , newMessage.textMessage)
+          
         dialog.append(newMessage)
         
         textMessage.text = ""
         collectionView.reloadData()
-        
+            do{
+                try manageContext.save()
+            }
+            catch let error {
+                print("Error = ", error)
+            }
             //        dismissKeyboard()
             
         }
