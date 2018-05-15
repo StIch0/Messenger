@@ -8,6 +8,8 @@
 
 import Foundation
 import UIKit
+@available(iOS 10.0, *)
+
 class StartViewController : UIViewController {
     var startImage : UIImageView = {
         var image = UIImageView(image: #imageLiteral(resourceName: "StartScreen"))
@@ -40,6 +42,15 @@ class StartViewController : UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        animateButton()
+    }
+    func animateButton (){
+        UIView.animate(withDuration: 0.4 , delay : 0.4 ,
+                       options : [.curveEaseInOut, .transitionFlipFromLeft],
+                       animations: {
+            self.inputButton.center.x += self.view.bounds.width
+        
+        }, completion: nil)
     }
     func setUpImageView (){
         view.addSubview(startImage)
@@ -53,6 +64,7 @@ class StartViewController : UIViewController {
         startImage.sizeToFit()
     }
 
+    @available(iOS 10.0, *)
     func seUpButtonView(){
         view.addSubview(inputButton)
         
@@ -67,6 +79,7 @@ class StartViewController : UIViewController {
 
     }
     
+    @available(iOS 10.0, *)
     @objc func loadMainView (){
         let viewController : ViewController = ViewController()
            navigationItem.backBarButtonItem = UIBarButtonItem(title: "Назад", style: .plain, target: nil, action: nil)

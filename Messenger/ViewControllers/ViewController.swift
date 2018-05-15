@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+@available(iOS 10.0, *)
 class ViewController: UIViewController {
     var activityIndicator : UIActivityIndicatorView!
     var backView : UIView!
@@ -16,7 +17,7 @@ class ViewController: UIViewController {
     var dialogs : [Message] = Array()
     let currentDateTime = Date()
     let formater = DateFormatter()
-//    var myself : User?
+    var spinner : UIImageView!
     let manageContext = DatabaseManager.shared.persistentContainer.viewContext
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +29,7 @@ class ViewController: UIViewController {
         loadData()
         view.backgroundColor = .white
         title = "Чаты"
-//        myself = User(context: manageContext)
+        setUpActivityIndicatorView()
     }
     func loadData (){
         var mes : [Message] = Array()
@@ -38,13 +39,14 @@ class ViewController: UIViewController {
 //            manageContext.delete(obj)
             let request : NSFetchRequest<Message> = Message.fetchRequest()
             request.sortDescriptors = [NSSortDescriptor(key: "dateTime", ascending: false)]
-            //this block don't work, i don't know why?????
-//            let predicate = NSPredicate(format: "user.id == \(obj.id)")
-//            request.predicate = predicate
-//            request.fetchLimit = 1
+            //this block don't work correctly, i don't know why?????
+            let predicate = NSPredicate(format: "user.id = %@","\(obj.id)")
+            request.predicate = predicate
+            request.fetchLimit = 1
             //end block
             do {
                 mes = try manageContext.fetch(request)
+                dialogs.append(contentsOf: mes)
             }
             catch let error {
                 print("Error = ", error.localizedDescription)
@@ -52,7 +54,7 @@ class ViewController: UIViewController {
             }
             
         }
-        dialogs = mes
+        
     }
     
     func fetchUser () ->[User]?{
@@ -66,12 +68,15 @@ class ViewController: UIViewController {
         }
         return nil
     }
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
+ 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        animateSpinner()
+
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        setUpActivityIndicatorView()
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -145,13 +150,6 @@ class ViewController: UIViewController {
                 self.dialogs.append(messageObject)
                 
                 self.dialogs.sort(by: { $0.dateTime! > $1.dateTime! })
-                do {
-                    try self.manageContext.save()
-                }
-                catch let error {
-                    print("Error = " ,error.localizedDescription)
-                }
-                
                 self.tableView.reloadData()
             }
             else {
@@ -161,30 +159,44 @@ class ViewController: UIViewController {
         alert.addAction(actionAlert)
         present(alert, animated: true, completion: nil)
     }
+    func animateSpinner(){
+        UIView.animate(withDuration: 0.5, delay: 0.5 , options : [.curveEaseInOut,
+                                                                .repeat,
+                                                                .autoreverse ] ,
+                       animations: {
+                        self.spinner.transform = self.spinner.transform.rotated(by: .pi)
+
+        }, completion: nil)
+    }
     func setUpActivityIndicatorView(){
-//        activityIndicator =  UIImageView(image: #imageLiteral(resourceName: "activityIndicator"))
         activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         backView = UIView()
          activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-        backView.addSubview(activityIndicator)
+        spinner = UIImageView(image: #imageLiteral(resourceName: "activityIndicator"))
         view.addSubview(backView)
-        activityIndicator.hidesWhenStopped = true
- //        activityIndicator.addSubview(UIImageView(image: #imageLiteral(resourceName: "activityIndicator")))
-         backView.translatesAutoresizingMaskIntoConstraints  = false
+//        backView.addSubview(activityIndicator)
+        backView.addSubview(spinner)
+         activityIndicator.hidesWhenStopped = true
+        backView.translatesAutoresizingMaskIntoConstraints  = false
         backView.topAnchor.constraint(equalTo: view.topAnchor)          .isActive = true
         backView.bottomAnchor.constraint(equalTo: view.bottomAnchor)    .isActive = true
         backView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         backView.leadingAnchor.constraint(equalTo: view.leadingAnchor)  .isActive = true
         backView.backgroundColor = UIColor(rgb: 0xFFFFFF, alfa: 0.4)
-        activityIndicator.centerXAnchor.constraint(equalTo: backView.centerXAnchor).isActive = true
-        activityIndicator.centerYAnchor.constraint(equalTo: backView.centerYAnchor).isActive = true
-//        activityIndicator.animationImages = [#imageLiteral(resourceName: "activityIndicator")]
-//        activityIndicator.animationDuration = .pi
-        activityIndicator.startAnimating()
+       
+//        activityIndicator.centerXAnchor.constraint(equalTo: backView.centerXAnchor).isActive = true
+//        activityIndicator.centerYAnchor.constraint(equalTo: backView.centerYAnchor).isActive = true
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        spinner.centerXAnchor.constraint(equalTo: backView.centerXAnchor).isActive = true
+        spinner.centerYAnchor.constraint(equalTo: backView.centerYAnchor).isActive = true
+        
+
+//        activityIndicator.startAnimating()
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
-            self.activityIndicator.stopAnimating()
+//            self.activityIndicator.stopAnimating()
             self.backView.removeFromSuperview()
         })
+
     }
 }
 

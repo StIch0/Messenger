@@ -78,19 +78,5 @@ class CurrentDialogsViewCell: UICollectionViewCell {
         dateTimeText.bottomAnchor.constraint(equalTo: bubbleView.bottomAnchor, constant: -3).isActive = true
         dateTimeText.font = UIFont.systemFont(ofSize: 11)
         dateTimeText.textColor = .black
-//        textMessage.layer.cornerRadius = 4
-//        textMessage.layer.masksToBounds = true
-//        bubbleView.addSubview(textMessage)
-//        bubbleView.addSubview(dateTimeText)
-//        bubbleView.translatesAutoresizingMaskIntoConstraints = false
-//        textMessage.translatesAutoresizingMaskIntoConstraints = false
-//        textMessage.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-//        textMessage.topAnchor.constraint(equalTo: topAnchor).isActive = true
-//        textMessage.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
-//        textMessage.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-//        textMessage.rightAnchor.constraint(equalTo: bubbleView.rightAnchor).isActive = true
-//        textMessage.topAnchor.constraint(equalTo: bubbleView.topAnchor).isActive = true
-//        textMessage.widthAnchor.constraint(equalTo: bubbleView.widthAnchor) .isActive = true
-//        textMessage.heightAnchor.constraint(equalTo: bubbleView.heightAnchor).isActive = true
     }
 }

@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+@available(iOS 10.0, *)
 class CurrentDialogsViewController: UIViewController {
     var collectionView : UICollectionView!
     var container : UIView!
@@ -15,6 +16,7 @@ class CurrentDialogsViewController: UIViewController {
     var sendMessage : UIButton!
     var dialog : [Message] = Array()
     var inputViewBottomAnchor : NSLayoutConstraint?
+    var collectionViewBottomAnchor : NSLayoutConstraint?
     let currentDateTime = Date()
     let formater = DateFormatter()
     var id : UInt32 = 100
@@ -23,7 +25,6 @@ class CurrentDialogsViewController: UIViewController {
         didSet {
             guard let mesDialog = user.message?.allObjects as? [Message] else { return }
             dialog = mesDialog
-//            navigationItem.title = "\(id)"
         }
     }
     
@@ -36,8 +37,6 @@ class CurrentDialogsViewController: UIViewController {
         formater.timeStyle = .medium
         formater.dateStyle = .long
         formater.dateFormat = "HH:mm"
-//        print(dialog.first?.messageText)
-        //dialog.append(Message(messageText: (dialog.first?.messageText)!, dateTime: (dialog.first?.dateTime)!))
         view.backgroundColor = .white
         title = "Чат"
         container = UIView()
@@ -48,18 +47,12 @@ class CurrentDialogsViewController: UIViewController {
         setUpNavBar()
         setUpCollectionView()
         collectionView.reloadData()
-        
         setUpKeyBoardObservers()
  
         hideKeyboard()
-//        var user0 = User(id: 0)
-//        var user1 = User(id: 1)
     }
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
-        if id == 0 {
-            id = arrId.first!
-        }
         arrId.removeAll()
         NotificationCenter.default.removeObserver(self)
     }
@@ -97,7 +90,6 @@ class CurrentDialogsViewController: UIViewController {
         container.layer.shadowColor = UIColor(rgb: 0x000000, alfa: 0.5).cgColor
         textMessage.backgroundColor = UIColor(rgb: 0xE7E7E7, alfa: 1)
         textMessage.font = UIFont.systemFont(ofSize: 17)
-//        sendMessage.backgroundColor = UIColor(rgb: 0xE11C28, alfa: 1)
         sendMessage.backgroundColor = .white
         sendMessage.setBackgroundImage(#imageLiteral(resourceName: "iconSend"), for: .normal)
         sendMessage.addTarget(self, action: #selector(sendMessageBtn), for: .touchDown)
@@ -123,15 +115,18 @@ class CurrentDialogsViewController: UIViewController {
         sendMessage.leftAnchor.constraint(equalTo: textMessage.rightAnchor, constant : 7).isActive = true
         sendMessage.widthAnchor.constraint(equalToConstant: 40).isActive = true
         collectionView.topAnchor.constraint(equalTo: view.topAnchor)      .isActive = true
-        collectionView.bottomAnchor.constraint(equalTo: container.topAnchor)      .isActive = true
         collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)  .isActive = true
         collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor)    .isActive = true
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.backgroundColor = UIColor(rgb: 0xF4F3F3, alfa: 1)
         collectionView.keyboardDismissMode = .onDrag
+        collectionViewBottomAnchor  = collectionView.bottomAnchor.constraint(equalTo: container.topAnchor)
+        collectionViewBottomAnchor?.isActive = true
+
     }
     
+    @available(iOS 10.0, *)
     @objc func sendMessageBtn(){
         if textMessage.text != "" {
             let dateTime = formater.string(from: currentDateTime)
@@ -156,16 +151,8 @@ class CurrentDialogsViewController: UIViewController {
         dialog.append(newMessage)
         
         textMessage.text = ""
-            do{
-                try manageContext.save()
-            }
-            catch let error {
-                print("Error = ", error)
-            }
+        collectionView.scrollToLast()
         collectionView.reloadData()
- 
-//            //        dismissKeyboard()
-            
         }
     }
 }

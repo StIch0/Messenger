@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+@available(iOS 10.0, *)
 extension CurrentDialogsViewController
 {
     func setUpKeyBoardObservers ()
@@ -21,6 +22,7 @@ extension CurrentDialogsViewController
     {
         let keyboardFrame = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect
         inputViewBottomAnchor?.constant = -(keyboardFrame?.height)!
+        collectionViewBottomAnchor?.constant = -(inputViewBottomAnchor?.constant)! + (container.frame.height)
         let keyboardDuration = (notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as AnyObject).doubleValue
         
         UIView.animate(withDuration: keyboardDuration!, animations: {
@@ -30,7 +32,8 @@ extension CurrentDialogsViewController
     
    @objc func handleKeyboardWillHide (notification : NSNotification) {
         inputViewBottomAnchor?.constant = 0
-    
+        collectionViewBottomAnchor?.constant = (inputViewBottomAnchor?.constant)!
+
         let keyboardDuration = (notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as AnyObject).doubleValue
         UIView.animate(withDuration: keyboardDuration!, animations: {
             self.view.layoutIfNeeded()
@@ -69,5 +72,22 @@ extension UIViewController
     @objc func dismissKeyboard()
     {
         view.endEditing(true)
+    }
+}
+extension UICollectionView {
+    func scrollToLast() {
+        guard numberOfSections > 0 else {
+            return
+        }
+        
+        let lastSection = numberOfSections - 1
+        
+        guard numberOfItems(inSection: lastSection) > 0 else {
+            return
+        }
+        
+        let lastItemIndexPath = IndexPath(item: numberOfItems(inSection: lastSection) - 1,
+                                          section: lastSection)
+        scrollToItem(at: lastItemIndexPath, at: .bottom, animated: true)
     }
 }

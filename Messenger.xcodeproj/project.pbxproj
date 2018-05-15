@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		770AC9BE20A99DAF0007FD1D /* Messenger.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 770AC9BC20A99DAE0007FD1D /* Messenger.xcdatamodeld */; };
+		770AC9C020AAF1300007FD1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 770AC9BF20AAF1300007FD1D /* Assets.xcassets */; };
 		77FA9A8820A55A160070F911 /* DialogsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FA9A8720A55A160070F911 /* DialogsViewCell.swift */; };
 		77FA9A8A20A593140070F911 /* CurrentDialogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FA9A8920A593140070F911 /* CurrentDialogsViewController.swift */; };
 		77FA9A8C20A5D42B0070F911 /* ExtCurrentDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FA9A8B20A5D42B0070F911 /* ExtCurrentDialogViewController.swift */; };
@@ -20,19 +21,17 @@
 		77FCB82120A43DC80051A9C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FCB82020A43DC80051A9C7 /* AppDelegate.swift */; };
 		77FCB82320A43DC80051A9C7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FCB82220A43DC80051A9C7 /* ViewController.swift */; };
 		77FCB82620A43DC80051A9C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77FCB82420A43DC80051A9C7 /* Main.storyboard */; };
-		77FCB82B20A43DC80051A9C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77FCB82A20A43DC80051A9C7 /* Assets.xcassets */; };
 		77FCB82E20A43DC80051A9C7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77FCB82C20A43DC80051A9C7 /* LaunchScreen.storyboard */; };
 		77FCB83820A43E400051A9C7 /* Техническое задание.txt in Resources */ = {isa = PBXBuildFile; fileRef = 77FCB83620A43E400051A9C7 /* Техническое задание.txt */; };
 		77FCB83920A43E400051A9C7 /* Настройки экранов.txt in Resources */ = {isa = PBXBuildFile; fileRef = 77FCB83720A43E400051A9C7 /* Настройки экранов.txt */; };
 		77FCB83B20A441B50051A9C7 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FCB83A20A441B50051A9C7 /* StartViewController.swift */; };
 		77FCB83D20A44A840051A9C7 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FCB83C20A44A840051A9C7 /* Extentions.swift */; };
-		77FCB84020A46DAD0051A9C7 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FCB83F20A46DAD0051A9C7 /* Message.swift */; };
-		77FCB84220A46E370051A9C7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FCB84120A46E370051A9C7 /* User.swift */; };
 		77FCB84520A473190051A9C7 /* ExtViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FCB84420A473190051A9C7 /* ExtViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		770AC9BD20A99DAE0007FD1D /* Messenger.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Messenger.xcdatamodel; sourceTree = "<group>"; };
+		770AC9BF20AAF1300007FD1D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../.Trash/Assets.xcassets; sourceTree = "<group>"; };
 		77FA9A8720A55A160070F911 /* DialogsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogsViewCell.swift; sourceTree = "<group>"; };
 		77FA9A8920A593140070F911 /* CurrentDialogsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentDialogsViewController.swift; sourceTree = "<group>"; };
 		77FA9A8B20A5D42B0070F911 /* ExtCurrentDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtCurrentDialogViewController.swift; sourceTree = "<group>"; };
@@ -46,15 +45,12 @@
 		77FCB82020A43DC80051A9C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		77FCB82220A43DC80051A9C7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		77FCB82520A43DC80051A9C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		77FCB82A20A43DC80051A9C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		77FCB82D20A43DC80051A9C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		77FCB82F20A43DC80051A9C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		77FCB83620A43E400051A9C7 /* Техническое задание.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Техническое задание.txt"; path = "../../../../../Downloads/Тестовое задание/Техническое задание.txt"; sourceTree = "<group>"; };
 		77FCB83720A43E400051A9C7 /* Настройки экранов.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "Настройки экранов.txt"; path = "../../../../../Downloads/Тестовое задание/Настройки экранов.txt"; sourceTree = "<group>"; };
 		77FCB83A20A441B50051A9C7 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		77FCB83C20A44A840051A9C7 /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
-		77FCB83F20A46DAD0051A9C7 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
-		77FCB84120A46E370051A9C7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		77FCB84420A473190051A9C7 /* ExtViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,8 +111,8 @@
 				77FCB83C20A44A840051A9C7 /* Extentions.swift */,
 				77FCB84320A46EA90051A9C7 /* Model */,
 				77FCB82420A43DC80051A9C7 /* Main.storyboard */,
-				77FCB82A20A43DC80051A9C7 /* Assets.xcassets */,
 				770AC9BC20A99DAE0007FD1D /* Messenger.xcdatamodeld */,
+				770AC9BF20AAF1300007FD1D /* Assets.xcassets */,
 				77FCB82C20A43DC80051A9C7 /* LaunchScreen.storyboard */,
 				77FCB82F20A43DC80051A9C7 /* Info.plist */,
 			);
@@ -149,8 +145,6 @@
 				77FA9AA620A828A30070F911 /* User+CoreDataProperties.swift */,
 				77FA9AA720A828A30070F911 /* Message+CoreDataClass.swift */,
 				77FA9AA820A828A30070F911 /* Message+CoreDataProperties.swift */,
-				77FCB83F20A46DAD0051A9C7 /* Message.swift */,
-				77FCB84120A46E370051A9C7 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -217,8 +211,8 @@
 				77FCB82E20A43DC80051A9C7 /* LaunchScreen.storyboard in Resources */,
 				77FCB83820A43E400051A9C7 /* Техническое задание.txt in Resources */,
 				77FCB83920A43E400051A9C7 /* Настройки экранов.txt in Resources */,
-				77FCB82B20A43DC80051A9C7 /* Assets.xcassets in Resources */,
 				77FCB82620A43DC80051A9C7 /* Main.storyboard in Resources */,
+				770AC9C020AAF1300007FD1D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,8 +237,6 @@
 				77FA9AAC20A828A30070F911 /* Message+CoreDataProperties.swift in Sources */,
 				77FCB82120A43DC80051A9C7 /* AppDelegate.swift in Sources */,
 				77FA9A9020A6D2FD0070F911 /* CurrentDialogViewCell.swift in Sources */,
-				77FCB84020A46DAD0051A9C7 /* Message.swift in Sources */,
-				77FCB84220A46E370051A9C7 /* User.swift in Sources */,
 				77FA9AAB20A828A30070F911 /* Message+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -385,7 +377,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6R6KJ6QT78;
 				INFOPLIST_FILE = Messenger/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pavelburdukovskii.Messenger;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -401,7 +393,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6R6KJ6QT78;
 				INFOPLIST_FILE = Messenger/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.pavelburdukovskii.Messenger;
 				PRODUCT_NAME = "$(TARGET_NAME)";

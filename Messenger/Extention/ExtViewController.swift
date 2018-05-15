@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+@available(iOS 10.0, *)
 extension ViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell : DialogsViewCell = tableView.dequeueReusableCell(withIdentifier: "dialogCell", for: indexPath) as! DialogsViewCell
@@ -23,7 +24,7 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! DialogsViewCell
-        let controller = CurrentDialogsViewController()
+        let controller : CurrentDialogsViewController = CurrentDialogsViewController()
         if controller.id != 0 {
         controller.user = dialogs[indexPath.row].user
         controller.id = UInt32(cell.id)
@@ -33,6 +34,7 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    @available(iOS 11.0, *)
     func deleteItem (at indexPath : IndexPath)->UIContextualAction{
         let action = UIContextualAction(style: .destructive, title: ""){
             (action, view, completion) in
@@ -43,17 +45,12 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
             }
             self.dialogs.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
-                 do {
-                    try self.manageContext.save()
-                }
-                catch let error {
-                    print("Error = " ,error.localizedDescription)
-                }
             completion(true)
         }
         action.image = #imageLiteral(resourceName: "iconDelete")
         return action
     }
+    @available(iOS 11.0, *)
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let delete = deleteItem(at: indexPath)
         return UISwipeActionsConfiguration(actions: [delete])
