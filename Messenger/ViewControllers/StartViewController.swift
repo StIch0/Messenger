@@ -69,6 +69,8 @@ class StartViewController : UIViewController {
     
     @objc func loadMainView (){
         let viewController : ViewController = ViewController()
+           navigationItem.backBarButtonItem = UIBarButtonItem(title: "Назад", style: .plain, target: nil, action: nil)
         navigationController?.pushViewController(viewController, animated: true)
+        
      }
 }

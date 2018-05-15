@@ -39,16 +39,16 @@ class CurrentDialogsViewController: UIViewController {
 //        print(dialog.first?.messageText)
         //dialog.append(Message(messageText: (dialog.first?.messageText)!, dateTime: (dialog.first?.dateTime)!))
         view.backgroundColor = .white
-     
+        title = "Чат"
         container = UIView()
         textMessage = UITextField()
         sendMessage = UIButton()
         layout = UICollectionViewFlowLayout()
         collectionView = UICollectionView(frame: CGRect.init(x: 0, y: 0, width: view.frame.width, height: view.frame.height), collectionViewLayout: layout)
-        
+        setUpNavBar()
         setUpCollectionView()
         collectionView.reloadData()
-
+        
         setUpKeyBoardObservers()
  
         hideKeyboard()
@@ -64,7 +64,13 @@ class CurrentDialogsViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
-    
+    func setUpNavBar (){
+        let navBar  = navigationController?.navigationBar
+        navBar?.barStyle = .default
+        navBar?.layer.shadowColor = UIColor(rgb: 0x000000, alfa: 0.38).cgColor
+        navBar?.layer.shadowOffset = CGSize(width: 0.2, height: 0.2)
+        navBar?.layer.shadowRadius = 7
+    }
     func setUpCollectionView (){
 
         collectionView.register(CurrentDialogsViewCell.self, forCellWithReuseIdentifier: "cuurentMessageCell")
@@ -85,9 +91,12 @@ class CurrentDialogsViewController: UIViewController {
         collectionView.showsVerticalScrollIndicator = true
         collectionView.alwaysBounceVertical = true
         
-        container.backgroundColor = .white//Color
-        collectionView.backgroundColor = .white
+        container.backgroundColor = .white
+        container.layer.shadowRadius = 4
+        container.layer.shadowOffset = CGSize(width: 0.2, height: 0.2)
+        container.layer.shadowColor = UIColor(rgb: 0x000000, alfa: 0.5).cgColor
         textMessage.backgroundColor = UIColor(rgb: 0xE7E7E7, alfa: 1)
+        textMessage.font = UIFont.systemFont(ofSize: 17)
 //        sendMessage.backgroundColor = UIColor(rgb: 0xE11C28, alfa: 1)
         sendMessage.backgroundColor = .white
         sendMessage.setBackgroundImage(#imageLiteral(resourceName: "iconSend"), for: .normal)
@@ -147,13 +156,14 @@ class CurrentDialogsViewController: UIViewController {
         dialog.append(newMessage)
         
         textMessage.text = ""
+            do{
+                try manageContext.save()
+            }
+            catch let error {
+                print("Error = ", error)
+            }
         collectionView.reloadData()
-//            do{
-//                try manageContext.save()
-//            }
-//            catch let error {
-//                print("Error = ", error)
-//            }
+ 
 //            //        dismissKeyboard()
             
         }

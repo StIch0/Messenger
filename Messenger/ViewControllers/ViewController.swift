@@ -39,9 +39,9 @@ class ViewController: UIViewController {
             let request : NSFetchRequest<Message> = Message.fetchRequest()
             request.sortDescriptors = [NSSortDescriptor(key: "dateTime", ascending: false)]
             //this block don't work, i don't know why?????
-            let predicate = NSPredicate(format: "user.id = \(obj.id)")
-            request.predicate = predicate
-            request.fetchLimit = 1
+//            let predicate = NSPredicate(format: "user.id == \(obj.id)")
+//            request.predicate = predicate
+//            request.fetchLimit = 1
             //end block
             do {
                 mes = try manageContext.fetch(request)
@@ -95,6 +95,7 @@ class ViewController: UIViewController {
      }
     
     func setUpNavBar (){
+        
         let navBar  = navigationController?.navigationBar
         navBar?.barStyle = .default
         navBar?.layer.shadowColor = UIColor(rgb: 0x000000, alfa: 0.38).cgColor
@@ -102,9 +103,9 @@ class ViewController: UIViewController {
         navBar?.layer.shadowRadius = 7
         let add = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addDialogs))
         add.setBackgroundImage(#imageLiteral(resourceName: "iconAdd"), for: .normal, barMetrics: .default)
-        navBar?.backItem?.title = "Назад"
+     
         navigationItem.rightBarButtonItem = add
-        
+
     }
     @objc func addDialogs(){
         if dialogs.count == 0 {

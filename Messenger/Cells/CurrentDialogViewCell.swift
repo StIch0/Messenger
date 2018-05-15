@@ -68,7 +68,9 @@ class CurrentDialogsViewCell: UICollectionViewCell {
         bubbleView.backgroundColor = UIColor(rgb: 0xD9D8D8, alfa: 1)
         textMessage.isScrollEnabled = false
         textMessage.isEditable = false
-        
+        bubbleView.layer.shadowRadius = 4
+        bubbleView.layer.shadowOffset = CGSize(width: 0.2, height: 0.2)
+        bubbleView.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5).cgColor
         dateTimeText.translatesAutoresizingMaskIntoConstraints = false
         RightSideDateAnchor = dateTimeText.leftAnchor.constraint(equalTo: bubbleView.rightAnchor, constant: 8)
         LeftSideDateAnchor = dateTimeText.rightAnchor.constraint(equalTo: bubbleView.leftAnchor, constant: -8)
