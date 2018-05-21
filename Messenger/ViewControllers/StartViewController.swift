@@ -26,7 +26,7 @@ class StartViewController : UIViewController {
         button.backgroundColor = UIColor(rgb: 0xCF1F28, alfa : 1)
         button.layer.shadowColor = UIColor(rgb: 0xE4222D, alfa: 0.5).cgColor
         button.layer.shadowRadius = 9
-        button.layer.shadowOffset = CGSize(width: 0.2, height: 0.2)
+        button.layer.shadowOffset =  CGSize(width: 1, height: 5)
         button.setTitleShadowColor(UIColor.init(rgb: 0xFFFFFF, alfa: 1), for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         button.titleLabel?.textColor = UIColor(rgb: 0xFFFFFF, alfa: 1)

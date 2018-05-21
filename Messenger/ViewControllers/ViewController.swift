@@ -104,7 +104,7 @@ class ViewController: UIViewController {
         let navBar  = navigationController?.navigationBar
         navBar?.barStyle = .default
         navBar?.layer.shadowColor = UIColor(rgb: 0x000000, alfa: 0.38).cgColor
-        navBar?.layer.shadowOffset = CGSize(width: 0.2, height: 0.2)
+        navBar?.layer.shadowOffset = CGSize(width: 1, height: 5)
         navBar?.layer.shadowRadius = 7
         let add = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addDialogs))
         add.setBackgroundImage(#imageLiteral(resourceName: "iconAdd"), for: .normal, barMetrics: .default)
