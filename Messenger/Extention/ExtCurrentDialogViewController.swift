@@ -21,8 +21,7 @@ extension CurrentDialogsViewController : UICollectionViewDelegate, UICollectionV
         cell.textMessage.frame = CGRect(x: 5, y: 0, width: estimatedFrame.width + 10 + 30, height: estimatedFrame.height + 15)
         
         //different users
-         let id = dialog[indexPath.row].user?.id
-        print("id in collection view cell = ", id)
+        let id = dialog[indexPath.row].user?.id
         if id  == 0 {
             cell.bubbleView.backgroundColor = UIColor(rgb: 0xD9D8D8, alfa: 1)
             cell.RightSideDateAnchor.isActive = false

@@ -13,7 +13,7 @@ import UIKit
 class StartViewController : UIViewController {
     var startImage : UIImageView = {
         var image = UIImageView(image: #imageLiteral(resourceName: "StartScreen"))
-        image.layer.shadowOffset = CGSize(width: 0.2, height: 0.2)
+        image.layer.shadowOffset = CGSize(width: 1, height: 5)
         image.layer.shadowColor = UIColor(rgb: 0x000000, alfa: 0.5).cgColor
         image.layer.shadowRadius = 4
         image.clipsToBounds = false
@@ -86,4 +86,11 @@ class StartViewController : UIViewController {
         navigationController?.pushViewController(viewController, animated: true)
         
      }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        if #available(iOS 11.0, *){
+        navigationController?.navigationBar.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 30)
+        }
+    }
 }

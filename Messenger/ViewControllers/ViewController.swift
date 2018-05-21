@@ -40,7 +40,7 @@ class ViewController: UIViewController {
             let request : NSFetchRequest<Message> = Message.fetchRequest()
             request.sortDescriptors = [NSSortDescriptor(key: "dateTime", ascending: false)]
             //this block don't work correctly, i don't know why?????
-            let predicate = NSPredicate(format: "user.id = %@","\(obj.id)")
+            let predicate = NSPredicate(format: " user.id == '\(obj.id)' AND user.id != '\(0)'")
             request.predicate = predicate
             request.fetchLimit = 1
             //end block

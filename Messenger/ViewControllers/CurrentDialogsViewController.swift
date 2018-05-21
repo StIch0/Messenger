@@ -86,7 +86,7 @@ class CurrentDialogsViewController: UIViewController {
         
         container.backgroundColor = .white
         container.layer.shadowRadius = 4
-        container.layer.shadowOffset = CGSize(width: 0.2, height: 0.2)
+        container.layer.shadowOffset = CGSize(width: 1, height: 5)
         container.layer.shadowColor = UIColor(rgb: 0x000000, alfa: 0.5).cgColor
         textMessage.backgroundColor = UIColor(rgb: 0xE7E7E7, alfa: 1)
         textMessage.font = UIFont.systemFont(ofSize: 17)
@@ -149,7 +149,12 @@ class CurrentDialogsViewController: UIViewController {
             newMessage.user = uuser
           
         dialog.append(newMessage)
-        
+            do {
+                try manageContext.save()
+            }
+            catch let error {
+                print("Error = ",error.localizedDescription)
+            }
         textMessage.text = ""
         collectionView.scrollToLast()
         collectionView.reloadData()
