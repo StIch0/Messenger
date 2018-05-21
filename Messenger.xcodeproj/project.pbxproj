@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		770AC9BE20A99DAF0007FD1D /* Messenger.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 770AC9BC20A99DAE0007FD1D /* Messenger.xcdatamodeld */; };
-		770AC9C020AAF1300007FD1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 770AC9BF20AAF1300007FD1D /* Assets.xcassets */; };
+		773A7AEE20B2911D00B5DE40 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 773A7AED20B2911C00B5DE40 /* Assets.xcassets */; };
 		77FA9A8820A55A160070F911 /* DialogsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FA9A8720A55A160070F911 /* DialogsViewCell.swift */; };
 		77FA9A8A20A593140070F911 /* CurrentDialogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FA9A8920A593140070F911 /* CurrentDialogsViewController.swift */; };
 		77FA9A8C20A5D42B0070F911 /* ExtCurrentDialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77FA9A8B20A5D42B0070F911 /* ExtCurrentDialogViewController.swift */; };
@@ -31,7 +31,7 @@
 
 /* Begin PBXFileReference section */
 		770AC9BD20A99DAE0007FD1D /* Messenger.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Messenger.xcdatamodel; sourceTree = "<group>"; };
-		770AC9BF20AAF1300007FD1D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../.Trash/Assets.xcassets; sourceTree = "<group>"; };
+		773A7AED20B2911C00B5DE40 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		77FA9A8720A55A160070F911 /* DialogsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogsViewCell.swift; sourceTree = "<group>"; };
 		77FA9A8920A593140070F911 /* CurrentDialogsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentDialogsViewController.swift; sourceTree = "<group>"; };
 		77FA9A8B20A5D42B0070F911 /* ExtCurrentDialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtCurrentDialogViewController.swift; sourceTree = "<group>"; };
@@ -111,8 +111,8 @@
 				77FCB83C20A44A840051A9C7 /* Extentions.swift */,
 				77FCB84320A46EA90051A9C7 /* Model */,
 				77FCB82420A43DC80051A9C7 /* Main.storyboard */,
+				773A7AED20B2911C00B5DE40 /* Assets.xcassets */,
 				770AC9BC20A99DAE0007FD1D /* Messenger.xcdatamodeld */,
-				770AC9BF20AAF1300007FD1D /* Assets.xcassets */,
 				77FCB82C20A43DC80051A9C7 /* LaunchScreen.storyboard */,
 				77FCB82F20A43DC80051A9C7 /* Info.plist */,
 			);
@@ -212,7 +212,7 @@
 				77FCB83820A43E400051A9C7 /* Техническое задание.txt in Resources */,
 				77FCB83920A43E400051A9C7 /* Настройки экранов.txt in Resources */,
 				77FCB82620A43DC80051A9C7 /* Main.storyboard in Resources */,
-				770AC9C020AAF1300007FD1D /* Assets.xcassets in Resources */,
+				773A7AEE20B2911D00B5DE40 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

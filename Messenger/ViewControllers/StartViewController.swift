@@ -42,7 +42,7 @@ class StartViewController : UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        animateButton()
+       // animateButton()
     }
     func animateButton (){
         UIView.animate(withDuration: 0.4 , delay : 0.4 ,
